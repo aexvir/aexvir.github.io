@@ -1,0 +1,89 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Alex Viscreanu</title>
+	<script src="src/js/jquery.js"></script>
+	<script src="src/js/scripts.js"></script>
+	<script src="src/js/pace.js"></script>
+	<script src="src/js/signet.js"></script>
+	<script src="src/js/tweenmax.js"></script>
+	<link rel="stylesheet" type="text/css" href="src/css/style.css">
+	<link rel="stylesheet" type="text/css" href="src/css/navicon.css">
+</head>
+<body>
+	<!-- Left panel, contains the directory of the web -->
+	<div id="button">
+		<a class="navicon-button x">
+			<div class="navicon"></div>
+		</a>
+	</div>
+	<div id="panel">
+		<img src="src/img/photo.png" alt="Photo" id="photo">
+		<nav id="menu">
+			<a class="directory active" href="#main">Inicio</a>
+			<a class="directory" href="#aboutme">Acerca de</a>
+			<a class="directory" href="#myworks">Trabajos</a>
+			<a class="directory" href="#contact">Contacto</a>
+		</nav>
+	</div>
+	<!-- Web Pages. Each link from the menu shows one of this pages. Making the web page feel like
+	some kind of web application. No scroll needed to explore the web on laptop/pc's. -->
+	<div id="main" class="page">
+		<div class="content">
+			<img src="src/img/av.png" alt="NameLogo" id="logoav">
+		</div>
+	</div>
+	<div id="aboutme" class="page">
+		<div class="title">Acerca de</div>
+		<div class="content">
+			<div class="achievement"><img src="" alt="icon"><div class="description">Holder</div></div>
+			<div class="achievement"><img src="" alt="icon"><div class="description">Holder</div></div>
+			<div class="achievement"><img src="" alt="icon"><div class="description">Holder</div></div>
+			<div class="achievement"><img src="" alt="icon"><div class="description">Holder</div></div>
+			<div class="achievement"><img src="" alt="icon"><div class="description">Holder</div></div>
+			<div class="achievement"><img src="" alt="icon"><div class="description">Holder</div></div>
+		</div>
+	</div>
+	<div id="myworks" class="page">
+		<div class="title">Trabajos</div>
+		<div class="content">
+			<div class="workitem">
+				<img src="">
+				<div class="name">WriteMasta</div>
+			</div>
+			<div class="workitem">
+				<img src="">
+				<div class="name">Centro YogaSana</div>
+			</div>
+			<div class="workitem">
+				<img src="">
+				<div class="name">Esta página web</div>
+			</div>
+			<div class="workitem">
+				<img src="">
+				<div class="name">Juego Multiplataforma</div>
+			</div>
+			<div class="workitem">
+				<img src="">
+				<div class="name">Juego Multiplataforma</div>
+			</div>
+		</div>
+	</div>
+	<div id="contact" class="page">
+		<div class="title">Contacto</div>
+		<div class="content">
+			
+		</div>
+	</div>
+	<script>
+		Pace.on('done', function(){
+			TweenMax.to($('#logoav'),4,{delay:0.1,ease: Elastic. easeOut.config( 1.5, 0.25),rotationX:0});
+		});
+	</script>
+<!-- 	<script>
+	$('#photo').click(function(){
+		TweenMax.to($(#logoav),0.5,{rotationX:'0deg'})
+	});
+</script> -->
+</body>
+</html>

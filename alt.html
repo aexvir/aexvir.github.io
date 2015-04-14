@@ -1,0 +1,89 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Alex Viscreanu</title>
+	<script src="src/js/jquery.js"></script>
+	<script src="src/js/alt.js"></script>
+	<script src="src/js/progress.js"></script>
+	<script src="src/js/signet.js"></script>
+	<script src="src/js/tweenmax.js"></script>
+	<link rel="stylesheet" type="text/css" href="src/css/alt.css">
+	<link rel="stylesheet" type="text/css" href="src/css/navicon.css">
+	<link rel="stylesheet" type="text/css" href="src/css/load.css">
+</head>
+<body>
+	<!-- Loading page -->
+	<div id="main" class="page">
+		<img id="logostl" src="src/img/logo.png" alt="STLDesign Logo">
+	</div>
+	<div id="logoav"><img src="src/img/av.png" alt="Main Logo"></div>
+	<!-- Main menu -->
+	<div id="button">
+		<a class="navicon-button x">
+			<div class="navicon"></div>
+		</a>
+	</div>
+	<div id="panel"></div>
+	<nav id="menu">
+		<div class="left zone">
+			<a class="directory active" href="javascript:;" dir="#main">Inicio</a>
+			<a class="directory" id="brp" href="javascript:;" dir="#aboutme">Acerca de</a>
+		</div>
+		<div class="right zone">
+			<a class="directory" href="javascript:;" dir="#myworks">Trabajos</a>
+			<a class="directory" href="javascript:;" dir="#contact">Contacto</a>
+		</div>
+	</nav>
+	<!-- About page -->
+	<div id="aboutme" class="page">
+		<div class="content">
+			<div class="achievement"><img src="" alt="icon"><div class="description">Holder</div></div>
+			<div class="achievement"><img src="" alt="icon"><div class="description">Holder</div></div>
+			<div class="achievement"><img src="" alt="icon"><div class="description">Holder</div></div>
+			<div class="achievement"><img src="" alt="icon"><div class="description">Holder</div></div>
+			<div class="achievement"><img src="" alt="icon"><div class="description">Holder</div></div>
+			<div class="achievement"><img src="" alt="icon"><div class="description">Holder</div></div>
+		</div>
+	</div>
+	<!-- Works page -->
+	<div id="myworks" class="page">
+		<div class="content">
+			<div class="workitem" dir"wm">
+				<img src="">
+				<div class="name">WriteMasta</div>
+			</div>
+			<div class="workitem" dir="cy">
+				<img src="">
+				<div class="name">Centro YogaSana</div>
+			</div>
+			<div class="workitem" dir="wb">
+				<img src="">
+				<div class="name">Esta página web</div>
+			</div>
+			<div class="workitem" dir="jm">
+				<img src="">
+				<div class="name">Juego Multiplataforma</div>
+			</div>
+			<div class="workitem" dir"#">
+				<img src="">
+				<div class="name">Juego Multiplataforma</div>
+			</div>
+		</div>
+	</div>
+	<!-- Contact page -->
+	<div id="contact" class="page"></div>
+	<!-- Dynamic load page -->
+	<div id="dynload" class="page"></div>
+	<!-- Loading Script -->
+	<script>
+		TweenMax.to($('#logoav img'),4,{delay:0.5,ease: Elastic. easeOut.config( 1.5, 0.25),rotationX:0});
+		prbar = progressJs().start().autoIncrease(1, 1);
+		prbar.onprogress(function(target, percent) {
+			if(percent == 100){
+				prbar.end();
+				TweenMax.to($('#menu'),0.5,{display:'flex',ease: Sine.easeOut,top:0});
+			}
+		});
+	</script>
+</body>
+</html>
