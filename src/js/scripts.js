@@ -96,7 +96,7 @@ $(document).on('click','.navicon-button',function(){
 	$('.navicon-button').toggleClass('open');
 	if($('#panel').css('display') !='none'){
 		TweenMax.to($('#panel'),0.25,{opacity:0,display:'none'});
-        var actual = 
+        var actual = 'ha';
 		//TweenMax.to($('.directory').not($('.active')),0.25,{opacity:0,display:'none'});
 	} else {
 		$('#panel').css('display','block');
