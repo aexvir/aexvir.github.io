@@ -24,7 +24,7 @@ $(document).on('click','.navicon-button',function(){
 // that is being displayed must go away and the new page must be loaded.
 $(document).on('click','.directory',function(){
 	if(!mobile){pageSwitchPc($(this).attr('dir'));}else{pageSwitchMobile($(this).attr('dir'));}
-    //if(mobile && ($(this).attr('dir') == '#aboutme')){fixing();}
+    if(mobile && ($(this).attr('dir') == '#aboutme')){fixing();}
 	rC('active');
 	$(this).addClass('active');
     $('#topbar').html($('.active').html());
@@ -49,7 +49,7 @@ $(document).on('click','.workitem',function(){
         click: true,
         swipe: true,
         nav:'thumbs'
-    });},250);
+    });},500);
 });
 // This function recieves the id of the page that must be loaded on the user
 // view. It gets the...
