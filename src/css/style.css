@@ -294,7 +294,7 @@ body{
     }
     .info{
         width: 85%;
-        font-size: 20px;
+        font-size: 16px;
     }
 	#menu,.left,.right{
 		flex-direction: column;
@@ -324,21 +324,22 @@ body{
         font-size: 22px;
         color: #fff;
         text-align: center;
-        background: red;
+        background: #D32232;
         margin-bottom: 10px;
+        box-shadow: 0px 0px 15px 0px #111;
     }
-    .description{font-size: 25px;}
+    .description{font-size: 20px;}
     .badge{
-        max-width: 350px;
-        height: 350px;
+        max-width: 300px;
+        height: 300px;
         width: 95%;
         margin: 15px;
         margin-top: 0;
         margin-bottom: 30px;
     }
     .badge img{
-        height: 310px;
-        width: 310px;
+        height: 260px;
+        width: 260px;
         margin: 0 auto;
         left: 0;
         right: 0;
@@ -346,11 +347,19 @@ body{
     }
     .workitem{
         max-width: 400px;
-        height: 260px;
+        max-height: 260px;
         width: 95%;
+        height: auto;
         margin: 15px;
         margin-top: 30px;
         margin-bottom: 0;
     }
-    .name{font-size: 25px;margin-top: 2.5px;}
+    .name{font-size: 20px;margin-top: 2.5px;margin-bottom: 5px}
+    .stick {
+        position:fixed;
+        z-index: 1;
+        top:50px;
+        left: 0;
+        width: 100%;
+    }
 }

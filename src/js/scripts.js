@@ -1,3 +1,19 @@
+//Resizing event
+/*$(window).resize(function(){
+    if($(window).width() >= 640){
+        if($('.directory').css('display') == 'none')
+            $('.directory').css('display','inline-block');
+        if($('.zone,.left,.right').css('display') == 'none')
+            $('.zone,.left,.right').css('display','flex');
+        $('#topbar,#panel').css('display','none');
+        mobile = false;
+    } else {
+        $('#topbar').css('display','block');
+        $('.zone,.active').css('display','none');
+        mobile = true;
+    }
+    console.log(mobile);
+});*/
 //If the device has a view width less than 640px things must go different
 var mobile = $(window).width() <= 640;
 //Navicon trigger
@@ -8,6 +24,7 @@ $(document).on('click','.navicon-button',function(){
 // that is being displayed must go away and the new page must be loaded.
 $(document).on('click','.directory',function(){
 	if(!mobile){pageSwitchPc($(this).attr('dir'));}else{pageSwitchMobile($(this).attr('dir'));}
+    //if(mobile && ($(this).attr('dir') == '#aboutme')){fixing();}
 	rC('active');
 	$(this).addClass('active');
     $('#topbar').html($('.active').html());
@@ -73,6 +90,7 @@ function pageSwitchPc(id){
 			if(!mobile){TweenMax.to($(old),0.25,{opacity:0,display:'none'});}
 			$(id).css('display','block');
             TweenMax.to($(id),0.5,{delay:0.5,opacity:1});
+            $(window).scrollTop(0);
 		}
 	}
 }
@@ -99,6 +117,7 @@ function pageSwitchMobile(id){
             $(old).css('display','none');
 			$(id).css('display','block');
 			TweenMax.to($(id),0,{opacity:1});
+            $(window).scrollTop(0);
 		}
 	}
 }
@@ -115,4 +134,35 @@ function animatePanel(){
 		TweenMax.to($('#panel'),0.25,{opacity:1});
 		TweenMax.to($('.zone'),0.25,{opacity:1});
 	}
+}
+//Stick when scrolling
+function fixing(){
+    var p1 = $('.1');
+    var p2 = $('.2');
+    var p3 = $('.3');
+    var pos1 = p1.position();
+    var pos2 = p2.position();
+    var pos3 = p3.position();
+    console.log(pos1,pos2,pos3);
+    $(window).scroll(function() {
+        var windowpos = $(window).scrollTop();
+        if (windowpos >= pos3.top) {
+            p3.addClass('stick');
+            p1.removeClass('stick');
+            p2.removeClass('stick');
+        } else if (windowpos >= pos2.top) {
+            p2.addClass('stick');
+            p1.removeClass('stick');
+            p3.removeClass('stick'); 
+        } else {
+            p1.addClass('stick');
+            p2.removeClass('stick');
+            p3.removeClass('stick');
+        }
+        if(windowpos == 0){
+            p1.removeClass('stick');
+            p2.removeClass('stick');
+            p3.removeClass('stick');
+        }
+    });
 }
