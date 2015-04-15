@@ -1,18 +1,18 @@
 //Resizing event
 /*$(window).resize(function(){
-    if($(window).width() >= 640){
-        if($('.directory').css('display') == 'none')
-            $('.directory').css('display','inline-block');
-        if($('.zone,.left,.right').css('display') == 'none')
-            $('.zone,.left,.right').css('display','flex');
-        $('#topbar,#panel').css('display','none');
-        mobile = false;
-    } else {
-        $('#topbar').css('display','block');
-        $('.zone,.active').css('display','none');
-        mobile = true;
-    }
-    console.log(mobile);
+	if($(window).width() >= 640){
+		if($('.directory').css('display') == 'none')
+			$('.directory').css('display','inline-block');
+		if($('.zone,.left,.right').css('display') == 'none')
+			$('.zone,.left,.right').css('display','flex');
+		$('#topbar,#panel').css('display','none');
+		mobile = false;
+	} else {
+		$('#topbar').css('display','block');
+		$('.zone,.active').css('display','none');
+		mobile = true;
+	}
+	console.log(mobile);
 });*/
 //If the device has a view width less than 640px things must go different
 var mobile = $(window).width() <= 640;
@@ -24,32 +24,32 @@ $(document).on('click','.navicon-button',function(){
 // that is being displayed must go away and the new page must be loaded.
 $(document).on('click','.directory',function(){
 	if(!mobile){pageSwitchPc($(this).attr('dir'));}else{pageSwitchMobile($(this).attr('dir'));}
-    if(mobile && ($(this).attr('dir') == '#aboutme')){fixing();}
+	if(mobile && ($(this).attr('dir') == '#aboutme')){fixing();}
 	rC('active');
 	$(this).addClass('active');
-    $('#topbar').html($('.active').html());
-    if(mobile){
-        $('.active').hide();
-        $('.directory').not('.active').show();
-        animatePanel();
-    }
+	$('#topbar').html($('.active').html());
+	if(mobile){
+		$('.active').hide();
+		$('.directory').not('.active').show();
+		animatePanel();
+	}
 });
 // When the user clicks on one of the directories he wants to visit, the page
 // that is being displayed must go away and the new page must be loaded.
 $(document).on('click','.workitem',function(){
 	$('#dynload').load('/src/html/'+$(this).attr('dir')+'.html');
-    if(!mobile){pageSwitchPc($('#dynload'));}else{pageSwitchMobile($('#dynload'));}
-    setTimeout(function(){$('.fotorama').fotorama({
-        //maxwidth: '80%',
-        maxheight: '75%',
-        allowfullscreen: 'native',
-        keyboard: true,
-        autoplay: true,
-        arrows: true,
-        click: true,
-        swipe: true,
-        nav:'thumbs'
-    });},500);
+	if(!mobile){pageSwitchPc($('#dynload'));}else{pageSwitchMobile($('#dynload'));}
+	setTimeout(function(){$('.fotorama').fotorama({
+		//maxwidth: '80%',
+		maxheight: '75%',
+		allowfullscreen: 'native',
+		keyboard: true,
+		autoplay: true,
+		arrows: true,
+		click: true,
+		swipe: true,
+		nav:'thumbs'
+	});},500);
 });
 // This function recieves the id of the page that must be loaded on the user
 // view. It gets the...
@@ -70,27 +70,27 @@ function pageSwitchPc(id){
 	};
 	if(old != id){
 		if(old === '#main'){
-            TweenMax.to($('#logoav img'),1,{ease: Power3.easeOut,height:'75px',width:'123px'});
+			TweenMax.to($('#logoav img'),1,{ease: Power3.easeOut,height:'75px',width:'123px'});
 			TweenMax.to($('#logoav'),1,{ease: Power3.easeOut,height:'75px',width:'20%',left:'40%',zIndex:10});
 			TweenMax.to($('.zone'),1,{ease: Power3.easeOut,width:'40%'});
-            TweenMax.to($(old),0.5,{top:'-100vh',display:'none'});
-            TweenMax.to($('#logostl'),0.5,{opacity:0,display:'none'});
+			TweenMax.to($(old),0.5,{top:'-100vh',display:'none'});
+			TweenMax.to($('#logostl'),0.5,{opacity:0,display:'none'});
 			$(id).css('display','block');
 			TweenMax.to($(id),0.25,{delay:0.5,opacity:1});
 		} else if(id === '#main'){
-            TweenMax.to($('#logoav img'),1,{ease: Power3.easeOut,height:'295px',width:'484px'});
-            TweenMax.to($('#logoav'),1,{ease: Power3.easeOut,height:'100vh',width:'100vw',left:0,zIndex:2});
-            TweenMax.to($('.zone'),1,{ease: Power3.easeOut,width:'50%'});
-            //$('#logostl').css('display','block');
+			TweenMax.to($('#logoav img'),1,{ease: Power3.easeOut,height:'295px',width:'484px'});
+			TweenMax.to($('#logoav'),1,{ease: Power3.easeOut,height:'100vh',width:'100vw',left:0,zIndex:2});
+			TweenMax.to($('.zone'),1,{ease: Power3.easeOut,width:'50%'});
+			//$('#logostl').css('display','block');
 			TweenMax.to($('#logostl'),0.5,{opacity:1});
 			TweenMax.to($(old),0.25,{opacity:0,display:'none'});
 			$(id+',#logostl').css('display','block');
-            TweenMax.to($(id),0.5,{top:0});
+			TweenMax.to($(id),0.5,{top:0});
 		} else {
 			if(!mobile){TweenMax.to($(old),0.25,{opacity:0,display:'none'});}
 			$(id).css('display','block');
-            TweenMax.to($(id),0.5,{delay:0.5,opacity:1});
-            $(window).scrollTop(0);
+			TweenMax.to($(id),0.5,{delay:0.5,opacity:1});
+			$(window).scrollTop(0);
 		}
 	}
 }
@@ -102,67 +102,67 @@ function pageSwitchMobile(id){
 	};
 	if(old != id){
 		if(old === '#main'){
-            TweenMax.to($('#logoav,#logostl,'+old),0.5,{opacity:0,display:'none'});
+			TweenMax.to($('#logoav,#logostl,'+old),0.5,{opacity:0,display:'none'});
 			$(id).css('display','block');
 			TweenMax.to($(id),0,{opacity:1});
 		} else if(id === '#main'){
-            $('#logoav').css('display','flex');
-            $('#logostl').css('display','block');
-            TweenMax.to($('#logoav,#logostl'),0,{opacity:1});
+			$('#logoav').css('display','flex');
+			$('#logostl').css('display','block');
+			TweenMax.to($('#logoav,#logostl'),0,{opacity:1});
 			if(!mobile){TweenMax.to($(old),0,{opacity:0});}
-            $(old).hide();
-			$(id).css('display','block');
-            TweenMax.to($(id),0,{opacity:1});
-		} else {
-            $(old).css('display','none');
+			$(old).hide();
 			$(id).css('display','block');
 			TweenMax.to($(id),0,{opacity:1});
-            $(window).scrollTop(0);
+		} else {
+			$(old).css('display','none');
+			$(id).css('display','block');
+			TweenMax.to($(id),0,{opacity:1});
+			$(window).scrollTop(0);
 		}
 	}
 }
 //Function that animates the menu panel
 function animatePanel(){
-    $('.navicon-button').toggleClass('open');
+	$('.navicon-button').toggleClass('open');
 	if($('#panel').css('display') !='none'){
-        //$('#topbar').removeClass('active');
+		//$('#topbar').removeClass('active');
 		TweenMax.to($('#panel'),0.25,{opacity:0,display:'none'});
 		TweenMax.to($('.zone'),0.25,{opacity:0,display:'none'});
 	} else {
 		$('#panel,.zone').show();
-        //$('#topbar').addClass('active');
+		//$('#topbar').addClass('active');
 		TweenMax.to($('#panel'),0.25,{opacity:1});
 		TweenMax.to($('.zone'),0.25,{opacity:1});
 	}
 }
 //Stick when scrolling
 function fixing(){
-    var p1 = $('.1');
-    var p2 = $('.2');
-    var p3 = $('.3');
-    var pos1 = p1.position();
-    var pos2 = p2.position();
-    var pos3 = p3.position();
-    console.log(pos1,pos2,pos3);
-    $(window).scroll(function() {
-        var windowpos = $(window).scrollTop();
-        if (windowpos >= pos3.top) {
-            p3.addClass('stick');
-            p1.removeClass('stick');
-            p2.removeClass('stick');
-        } else if (windowpos >= pos2.top) {
-            p2.addClass('stick');
-            p1.removeClass('stick');
-            p3.removeClass('stick'); 
-        } else {
-            p1.addClass('stick');
-            p2.removeClass('stick');
-            p3.removeClass('stick');
-        }
-        if(windowpos == 0){
-            p1.removeClass('stick');
-            p2.removeClass('stick');
-            p3.removeClass('stick');
-        }
-    });
+	var p1 = $('.1');
+	var p2 = $('.2');
+	var p3 = $('.3');
+	var pos1 = p1.position();
+	var pos2 = p2.position();
+	var pos3 = p3.position();
+	console.log(pos1,pos2,pos3);
+	$(window).scroll(function() {
+		var windowpos = $(window).scrollTop();
+		if (windowpos >= pos3.top) {
+			p3.addClass('stick');
+			p1.removeClass('stick');
+			p2.removeClass('stick');
+		} else if (windowpos >= pos2.top) {
+			p2.addClass('stick');
+			p1.removeClass('stick');
+			p3.removeClass('stick'); 
+		} else {
+			p1.addClass('stick');
+			p2.removeClass('stick');
+			p3.removeClass('stick');
+		}
+		if(windowpos == 0){
+			p1.removeClass('stick');
+			p2.removeClass('stick');
+			p3.removeClass('stick');
+		}
+	});
 }

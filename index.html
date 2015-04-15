@@ -3,6 +3,8 @@
 	<meta charset="UTF-8">
 	<meta name=viewport content="width=device-width, initial-scale=1">
 	<meta name="expires" content="sat, 01 Jan 2050">
+	<meta name="signet:authors" content="Alexandru Constantin Viscreanu">
+	<meta name="signet:links" content="http://proudh0n.github.io">
 	<title>Alex Viscreanu</title>
 	<script src="src/js/jquery.js"></script>
 	<script src="src/js/scripts.js"></script>
@@ -16,7 +18,7 @@
 	<link rel="stylesheet" type="text/css" href="src/css/fotorama.css">
 </head>
 <body>
-    <div class="top"></div>
+	<div class="top"></div>
 	<!-- Loading page -->
 	<div id="main" class="page">
 		<img id="logostl" src="src/img/web/logo.png" alt="STLDesign Logo">
@@ -42,8 +44,8 @@
 	</nav>
 	<!-- About page -->
 	<div id="aboutme" class="page">
-		<div class="content">
-		    <div class="category 1">Información Personal</div>
+		<div class="content mw">
+			<div class="category 1">Información Personal</div>
 			<div class="badge bp1"><img src="src/img/web/badges/fotele.jpg" alt="icon"><div class="description">Yo</div></div>
 			<div class="badge"><img src="src/img/web/badges/upv.png" alt="icon"><div class="description">Estudiante Ing. Informática</div></div>
 			<div class="badge"><img src="src/img/web/badges/browser.png" alt="icon"><div class="description">Desarrollador Web Frontend</div></div>
@@ -62,7 +64,7 @@
 	</div>
 	<!-- Works page -->
 	<div id="myworks" class="page">
-		<div class="content">
+		<div class="content mw">
 			<div class="workitem" dir="wm">
 				<img src="src/img/wm/full/1.png">
 				<div class="name">WriteMasta</div>
@@ -75,25 +77,21 @@
 				<img src="src/img/wb/full/1.png">
 				<div class="name">Esta página web</div>
 			</div>
-			<div class="workitem" dir="jm">
-				<img src="">
-				<div class="name">Juego Multiplataforma</div>
-			</div>
-			<div class="workitem" dir"#">
-				<img src="">
-				<div class="name">Juego Multiplataforma</div>
-			</div>
 		</div>
 	</div>
 	<!-- Contact page -->
 	<div id="contact" class="page">
-        <div class="content">
-            <div class="category">Puedes encontrarme en...</div>
-            <a href="mailto:alexviscreanu@gmail.com" class="badge"><img src="src/img/web/badges/gmail.png" alt="icon"><div class="description">alexviscreanu@gmail.com</div></a>
-            <a href="http://google.com/+AlexViscreanu-stlDesign" class="badge"><img src="src/img/web/badges/googleplus.png" alt="icon"><div class="description">+AlexViscreanu-stlDesign</div></a>
-            <a href="http://stayl.deviantart.com/" class="badge"><img src="src/img/web/badges/deviantart.png" alt="icon"><div class="description">Deviantart</div></a>
-            <a href="https://www.facebook.com/alex.viscreanu" class="badge"><img src="src/img/web/badges/facebook.png" alt="icon"><div class="description">Facebook</div></a>
-        </div>
+		<div class="content mw">
+			<div class="wrapc">
+				<div class="category">Puedes encontrarme en...</div>
+				<div class="wrapi">
+					<a href="mailto:alexviscreanu@gmail.com" class="badge"><img src="src/img/web/badges/gmail.png" alt="icon"><div class="description">alexviscreanu@gmail.com</div></a>
+				<a href="http://google.com/+AlexViscreanu-stlDesign" class="badge"><img src="src/img/web/badges/googleplus.png" alt="icon"><div class="description">+AlexViscreanu-stlDesign</div></a>
+				<a href="http://stayl.deviantart.com/" class="badge"><img src="src/img/web/badges/deviantart.png" alt="icon"><div class="description">Deviantart</div></a>
+				<a href="https://www.facebook.com/alex.viscreanu" class="badge"><img src="src/img/web/badges/facebook.png" alt="icon"><div class="description">Facebook</div></a>
+				</div>				
+			</div>
+		</div>
 	</div>
 	<!-- Dynamic load page -->
 	<div id="dynload" class="page"></div>
@@ -103,12 +101,12 @@
 		prbar = progressJs().start().autoIncrease(5, 1);
 		prbar.onprogress(function(target, percent) {
 			if(percent == 100){
-                prbar.end();
+				prbar.end();
 				TweenMax.to($('#menu'),0.5,{display:'flex',ease: Sine.easeOut,top:0});
-                $('#topbar').html($('.active').html());
+				$('#topbar').html($('.active').html());
 			}
 		});
-        $(document).ready(setTimeout(function(){prbar.set(100);},3000));
+		$(document).ready(setTimeout(function(){prbar.set(100);},3000));
 	</script>
 </body>
 </html>
