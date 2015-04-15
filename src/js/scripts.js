@@ -7,7 +7,7 @@ $(document).on('click','.navicon-button',function(){
 // When the user clicks on one of the directories he wants to visit, the page
 // that is being displayed must go away and the new page must be loaded.
 $(document).on('click','.directory',function(){
-	pageswitch($(this).attr('dir'));
+	if(!mobile){pageSwitchPc($(this).attr('dir'));}else{pageSwitchMobile($(this).attr('dir'));}
 	rC('active');
 	$(this).addClass('active');
     $('#topbar').html($('.active').html());
@@ -21,7 +21,7 @@ $(document).on('click','.directory',function(){
 // that is being displayed must go away and the new page must be loaded.
 $(document).on('click','.workitem',function(){
 	$('#dynload').load('/src/html/'+$(this).attr('dir')+'.html');
-	pageswitch($('#dynload'));
+    if(!mobile){pageSwitchPc($('#dynload'));}else{pageSwitchMobile($('#dynload'));}
     setTimeout(function(){$('.fotorama').fotorama({
         //maxwidth: '80%',
         maxheight: '75%',
@@ -45,7 +45,7 @@ function rC(id){
 	};
 }
 //Function that animates the page switch
-function pageswitch(id){
+function pageSwitchPc(id){
 	old = '';
 	for (var i = 0; i < pages.length; i++) {
 		if($(pages[i]).css('display') != 'none')
@@ -53,39 +53,52 @@ function pageswitch(id){
 	};
 	if(old != id){
 		if(old === '#main'){
-			if(mobile){
-				TweenMax.to($('#logoav'),0.5,{opacity:0});
-                $('#logoav').hide();
-			} else {
-				TweenMax.to($('#logoav img'),1,{ease: Power3.easeOut,height:'75px',width:'123px'});
-				TweenMax.to($('#logoav'),1,{ease: Power3.easeOut,height:'75px',width:'20%',left:'40%',zIndex:10});
-				TweenMax.to($('.zone'),1,{ease: Power3.easeOut,width:'40%'});
-			}
-            TweenMax.to($('#logostl'),0.5,{opacity:0});
-			TweenMax.to($(old),0.5,{top:'-100vh'});
-            $('#logostl,'+old).hide();
-			$(id).show();
+            TweenMax.to($('#logoav img'),1,{ease: Power3.easeOut,height:'75px',width:'123px'});
+			TweenMax.to($('#logoav'),1,{ease: Power3.easeOut,height:'75px',width:'20%',left:'40%',zIndex:10});
+			TweenMax.to($('.zone'),1,{ease: Power3.easeOut,width:'40%'});
+            TweenMax.to($(old),0.5,{top:'-100vh',display:'none'});
+            TweenMax.to($('#logostl'),0.5,{opacity:0,display:'none'});
+			$(id).css('display','block');
 			TweenMax.to($(id),0.25,{delay:0.5,opacity:1});
 		} else if(id === '#main'){
-            if(mobile){
-                $('#logoav').show();
-                TweenMax.to($('#logoav'),0.5,{opacity:1});
-            } else {
-                TweenMax.to($('#logoav img'),1,{ease: Power3.easeOut,height:'295px',width:'484px'});
-                TweenMax.to($('#logoav'),1,{ease: Power3.easeOut,height:'100vh',width:'100vw',left:0,zIndex:2});
-                TweenMax.to($('.zone'),1,{ease: Power3.easeOut,width:'50%'});
-            }
-            $('#logostl').show();
+            TweenMax.to($('#logoav img'),1,{ease: Power3.easeOut,height:'295px',width:'484px'});
+            TweenMax.to($('#logoav'),1,{ease: Power3.easeOut,height:'100vh',width:'100vw',left:0,zIndex:2});
+            TweenMax.to($('.zone'),1,{ease: Power3.easeOut,width:'50%'});
+            //$('#logostl').css('display','block');
 			TweenMax.to($('#logostl'),0.5,{opacity:1});
-			if(!mobile){TweenMax.to($(old),0.25,{opacity:0});}
-            $(old).hide();
-			$(id).show();
-			TweenMax.to($(id),0.5,{top:0});
+			TweenMax.to($(old),0.25,{opacity:0,display:'none'});
+			$(id+',#logostl').css('display','block');
+            TweenMax.to($(id),0.5,{top:0});
 		} else {
-			if(!mobile){TweenMax.to($(old),0.25,{opacity:0});}
+			if(!mobile){TweenMax.to($(old),0.25,{opacity:0,display:'none'});}
+			$(id).css('display','block');
+            TweenMax.to($(id),0.5,{delay:0.5,opacity:1});
+		}
+	}
+}
+function pageSwitchMobile(id){
+	old = '';
+	for (var i = 0; i < pages.length; i++) {
+		if($(pages[i]).css('display') != 'none')
+			old = pages[i];
+	};
+	if(old != id){
+		if(old === '#main'){
+            TweenMax.to($('#logoav,#logostl,'+old),0.5,{opacity:0,display:'none'});
+			$(id).css('display','block');
+			TweenMax.to($(id),0,{opacity:1});
+		} else if(id === '#main'){
+            $('#logoav').css('display','flex');
+            $('#logostl').css('display','block');
+            TweenMax.to($('#logoav,#logostl'),0,{opacity:1});
+			if(!mobile){TweenMax.to($(old),0,{opacity:0});}
             $(old).hide();
-			$(id).show();
-			TweenMax.to($(id),0.25,{delay:0.5,opacity:1});
+			$(id).css('display','block');
+            TweenMax.to($(id),0,{opacity:1});
+		} else {
+            $(old).css('display','none');
+			$(id).css('display','block');
+			TweenMax.to($(id),0,{opacity:1});
 		}
 	}
 }

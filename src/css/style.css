@@ -6,7 +6,7 @@
 /*General style*/
 body{
 	margin: 0;
-	background: url(../img/pattern.png);
+	background: url(../img/web/pattern.png);
 	height: 100%;
 	font-family: OpenSans;
 }
@@ -39,7 +39,7 @@ body{
 	width: 100vw;
 	top: 0;
 	left: 0;
-	background: url(../img/ae.jpg);
+	background: url(../img/web/ae.jpg);
 }
 #logoav img{
 	display: block
@@ -186,6 +186,7 @@ body{
     margin-bottom: 10px;
 }
 .badge{
+    text-decoration: none;
 	display: flex;
 	flex-direction: column;
 	flex-wrap: nowrap;
@@ -195,8 +196,6 @@ body{
 	margin: 15px;
 	margin-top: 0;
 	margin-bottom: 30px;
-	/*background: #2d2d2d;
-    box-shadow: 0px 0px 15px 0px #111;*/
 }
 .badge img{
 	display: block;
@@ -295,7 +294,7 @@ body{
     }
     .info{
         width: 85%;
-        font-size: 18px;
+        font-size: 20px;
     }
 	#menu,.left,.right{
 		flex-direction: column;
@@ -326,7 +325,32 @@ body{
         color: #fff;
         text-align: center;
         background: red;
-        margin-top: -35px;
         margin-bottom: 10px;
     }
+    .description{font-size: 25px;}
+    .badge{
+        max-width: 350px;
+        height: 350px;
+        width: 95%;
+        margin: 15px;
+        margin-top: 0;
+        margin-bottom: 30px;
+    }
+    .badge img{
+        height: 310px;
+        width: 310px;
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+        margin-top: 10px;
+    }
+    .workitem{
+        max-width: 400px;
+        height: 260px;
+        width: 95%;
+        margin: 15px;
+        margin-top: 30px;
+        margin-bottom: 0;
+    }
+    .name{font-size: 25px;margin-top: 2.5px;}
 }
