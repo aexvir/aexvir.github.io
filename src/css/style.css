@@ -185,7 +185,7 @@ body{
     text-align: center;
     margin-bottom: 10px;
 }
-.achievement{
+.badge{
 	display: flex;
 	flex-direction: column;
 	flex-wrap: nowrap;
@@ -195,10 +195,10 @@ body{
 	margin: 15px;
 	margin-top: 0;
 	margin-bottom: 30px;
-	background: #2d2d2d;
-    box-shadow: 0px 0px 15px 0px #111;
+	/*background: #2d2d2d;
+    box-shadow: 0px 0px 15px 0px #111;*/
 }
-.achievement img{
+.badge img{
 	display: block;
 	align-self:center;
 	height: 185px;
@@ -207,10 +207,17 @@ body{
 	left: 0;
 	right: 0;
 	margin-top: 10px;
-}
-#fotele{
     border-radius: 50%;
-    box-shadow: 0px 0px 5px 0px #222;
+    box-shadow: 0px 0px 15px 0px #111;
+    -webkit-transition: all 0.25s ease-in-out;
+	-moz-transition: all 0.25s ease-in-out;
+	-ms-transition: all 0.25s ease-in-out;
+	-o-transition: all 0.25s ease-in-out;
+	transition: all 0.25s ease-in-out;
+}
+.badge img:hover{
+    background-color: #D32232;
+    box-shadow: 0px 0px 15px 0px #D32232;
 }
 .description{
 	align-self: flex-end;
@@ -276,6 +283,20 @@ body{
 }
 /*Mobile version*/
 @media screen and (max-width: 640px) {
+    .content{
+        width: 100%;
+        margin: 0;
+        top: 50px;
+        padding: 0;
+    }
+    .fotorama{
+        background-color: #222;
+        box-shadow: 0px 0px 15px 0px #111;
+    }
+    .info{
+        width: 85%;
+        font-size: 18px;
+    }
 	#menu,.left,.right{
 		flex-direction: column;
 		flex:none;
@@ -283,13 +304,29 @@ body{
 		z-index: 8;
 	}
 	.directory{
+        height: 75px;
+        line-height: 75px;
+        border-bottom: 1px solid #222;
 		width: 100vw;
+        font-size: 22px;
 	}
-	.zone{display: none;}
-    #topbar{
+	.zone,.active{display: none;}
+    .left{
+        margin-top: 50px;
+    }
+    #topbar,#button{
         display: block;
     }
-	#button{
-		display: block;
-	}
+    #topbar{font-size: 25px;}
+    .category{
+        width: 100vw;
+        height: 35px;
+        line-height: 35px;
+        font-size: 22px;
+        color: #fff;
+        text-align: center;
+        background: red;
+        margin-top: -35px;
+        margin-bottom: 10px;
+    }
 }
