@@ -1,19 +1,19 @@
 //Resizing event
-/*$(window).resize(function(){
-	if($(window).width() >= 640){
-		if($('.directory').css('display') == 'none')
-			$('.directory').css('display','inline-block');
-		if($('.zone,.left,.right').css('display') == 'none')
-			$('.zone,.left,.right').css('display','flex');
-		$('#topbar,#panel').css('display','none');
-		mobile = false;
-	} else {
-		$('#topbar').css('display','block');
-		$('.zone,.active').css('display','none');
+$(window).resize(function(){
+	if($(window).width() < 640){
 		mobile = true;
+		$('#topbar').css('display', 'block');
+		$('.directory,.zone,#panel').css('display', 'none');
+	} else {
+		mobile = false;
+		$('#topbar').css('display', 'none');
+		$('.directory').css('display', 'inline-block');
+		$('.zone').css('display','flex');
+		$('.directory,.zone').css('opacity', '1');
+		$('#panel').css('display', 'none');
 	}
 	console.log(mobile);
-});*/
+});
 //If the device has a view width less than 640px things must go different
 var mobile = $(window).width() <= 640;
 //Navicon trigger
@@ -85,6 +85,8 @@ function pageSwitchPc(id){
 			TweenMax.to($('#logostl'),0.5,{opacity:1});
 			TweenMax.to($(old),0.25,{opacity:0,display:'none'});
 			$(id+',#logostl').css('display','block');
+			$('#logoav').css('display', 'flex');
+			$(id+',#logoav').css('opacity', '1');
 			TweenMax.to($(id),0.5,{top:0});
 		} else {
 			if(!mobile){TweenMax.to($(old),0.25,{opacity:0,display:'none'});}
@@ -130,6 +132,7 @@ function animatePanel(){
 		TweenMax.to($('.zone'),0.25,{opacity:0,display:'none'});
 	} else {
 		$('#panel,.zone').show();
+		$('.directory').css('display', 'inline-block');
 		//$('#topbar').addClass('active');
 		TweenMax.to($('#panel'),0.25,{opacity:1});
 		TweenMax.to($('.zone'),0.25,{opacity:1});
