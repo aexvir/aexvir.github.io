@@ -17,9 +17,9 @@ $(window).resize(function(){
 //If the device has a view width less than 640px things must go different
 var mobile = $(window).width() <= 640;
 //Navicon trigger
-$(document).on('click','.navicon-button',function(){
+/*$(document).on('click','.navicon-button',function(){
 	animatePanel();
-});
+});*/
 // When the user clicks on one of the directories he wants to visit, the page
 // that is being displayed must go away and the new page must be loaded.
 $(document).on('click','.directory',function(){
@@ -104,27 +104,25 @@ function pageSwitchMobile(id){
 	};
 	if(old != id){
 		if(old === '#main'){
-			TweenMax.to($('#logoav,#logostl,'+old),0.5,{opacity:0,display:'none'});
+			TweenMax.to($('#logoav,'+old),0.5,{top:'-100vh'});
 			$(id).css('display','block');
-			TweenMax.to($(id),0.5,{opacity:1});
+			TweenMax.to($(id),0.5,{delay:0.5,opacity:1});
 		} else if(id === '#main'){
 			$('#logoav').css('display','flex');
 			$('#logostl').css('display','block');
-			TweenMax.to($('#logoav,#logostl'),0,{opacity:1});
-			if(!mobile){TweenMax.to($(old),0,{opacity:0});}
 			TweenMax.to($(old),0.5,{opacity:0,display:'none'});
 			$(id).css('display','block');
-			TweenMax.to($(id),0.5,{opacity:1});
+			TweenMax.to($('#logoav,'+id),0.5,{delay:0.5,top:0});
 		} else {
 			TweenMax.to($(old),0.5,{opacity:0,display:'none'});
 			$(id).css('display','block');
-			TweenMax.to($(id),0.5,{opacity:1});
+			TweenMax.to($(id),0.5,{delay:0.5,opacity:1});
 			$(window).scrollTop(0);
 		}
 	}
 }
 //Function that animates the menu panel
-function animatePanel(){
+/*function animatePanel(){
 	$('.navicon-button').toggleClass('open');
 	if($('#panel').css('display') !='none'){
 		//$('#topbar').removeClass('active');
@@ -137,7 +135,7 @@ function animatePanel(){
 		TweenMax.to($('#panel'),0.25,{opacity:1});
 		TweenMax.to($('.zone'),0.25,{opacity:1});
 	}
-}
+}*/
 //Stick when scrolling
 function fixing(){
 	var p1 = $('.1');
