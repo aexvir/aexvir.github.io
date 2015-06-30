@@ -371,6 +371,8 @@ body{
 }
 /*Mobile version*/
 @media screen and (max-width: 640px) {
+	.dirname{display: none;}
+	.fa{margin-top: 12px;}
 	.mw{
 		align-items: flex-start;
 		padding-bottom: 25px !important;
@@ -393,27 +395,27 @@ body{
 		width: 85%;
 		font-size: 16px;
 	}
-	#menu,.left,.right{
+	/*#menu,.left,.right{
 		flex-direction: column;
 		flex:none;
 		width: 100vw;
 		z-index: 8;
-	}
+	}*/
 	.directory{
-		height: 75px;
-		line-height: 75px;
+		height: 50px;
+		line-height: 50px;
 		border-bottom: 1px solid #222;
 		width: 100vw;
 		font-size: 22px;
 	}
-	.zone,.active{display: none;}
-	.left{
+	/*.zone,.active{display: none;}*/
+	/*.left{
 		margin-top: 50px;
 	}
 	#topbar,#button{
 		display: block;
 	}
-	#topbar{font-size: 25px;}
+	#topbar{font-size: 25px;}*/
 	.category{
 		width: 100vw;
 		height: 35px;
@@ -435,8 +437,8 @@ body{
 		margin-bottom: 30px;
 	}
 	.badge img{
-		height: 260px;
-		width: 260px;
+		height: 220px;
+		width: 220px;
 		margin: 0 auto;
 		left: 0;
 		right: 0;

@@ -2,8 +2,8 @@
 $(window).resize(function(){
 	if($(window).width() < 640){
 		mobile = true;
-		$('#topbar').css('display', 'block');
-		$('.directory,.zone,#panel').css('display', 'none');
+		//$('#topbar').css('display', 'block');
+		//$('.directory,.zone,#panel').css('display', 'none');
 	} else {
 		mobile = false;
 		$('#topbar').css('display', 'none');
@@ -28,11 +28,11 @@ $(document).on('click','.directory',function(){
 	rC('active');
 	$(this).addClass('active');
 	$('#topbar').html($('.active').html());
-	if(mobile){
+	/*if(mobile){
 		$('.active').hide();
 		$('.directory').not('.active').show();
 		animatePanel();
-	}
+	}*/
 });
 // When the user clicks on one of the directories he wants to visit, the page
 // that is being displayed must go away and the new page must be loaded.
