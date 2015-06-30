@@ -431,7 +431,7 @@ body{
 	.badge{
 		max-width: 300px;
 		height: 300px;
-		width: 95%;
+		width: auto;
 		margin: 15px;
 		margin-top: 0;
 		margin-bottom: 30px;
@@ -446,8 +446,8 @@ body{
 	}
 	.workitem{
 		max-width: 400px;
-		max-height: 260px;
-		width: 95%;
+		max-height: 220px;
+		width: auto;
 		height: auto;
 		margin: 15px;
 		margin-top: 30px;

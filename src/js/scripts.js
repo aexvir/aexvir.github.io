@@ -106,19 +106,19 @@ function pageSwitchMobile(id){
 		if(old === '#main'){
 			TweenMax.to($('#logoav,#logostl,'+old),0.5,{opacity:0,display:'none'});
 			$(id).css('display','block');
-			TweenMax.to($(id),0,{opacity:1});
+			TweenMax.to($(id),0.5,{opacity:1});
 		} else if(id === '#main'){
 			$('#logoav').css('display','flex');
 			$('#logostl').css('display','block');
 			TweenMax.to($('#logoav,#logostl'),0,{opacity:1});
 			if(!mobile){TweenMax.to($(old),0,{opacity:0});}
-			$(old).hide();
+			TweenMax.to($(old),0.5,{opacity:0,display:'none'});
 			$(id).css('display','block');
-			TweenMax.to($(id),0,{opacity:1});
+			TweenMax.to($(id),0.5,{opacity:1});
 		} else {
-			$(old).css('display','none');
+			TweenMax.to($(old),0.5,{opacity:0,display:'none'});
 			$(id).css('display','block');
-			TweenMax.to($(id),0,{opacity:1});
+			TweenMax.to($(id),0.5,{opacity:1});
 			$(window).scrollTop(0);
 		}
 	}
