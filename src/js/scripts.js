@@ -104,19 +104,19 @@ function pageSwitchMobile(id){
 	};
 	if(old != id){
 		if(old === '#main'){
-			TweenMax.to($('#logoav,'+old),0.5,{top:'-100vh'});
+			TweenMax.to($('#logoav,'+old),0,{top:'-100vh'});
 			$(id).css('display','block');
-			TweenMax.to($(id),0.5,{delay:0.5,opacity:1});
+			TweenMax.to($(id),0,{delay:0,opacity:1});
 		} else if(id === '#main'){
 			$('#logoav').css('display','flex');
 			$('#logostl').css('display','block');
-			TweenMax.to($(old),0.5,{opacity:0,display:'none'});
+			TweenMax.to($(old),0,{opacity:0,display:'none'});
 			$(id).css('display','block');
-			TweenMax.to($('#logoav,'+id),0.5,{delay:0.5,top:0});
+			TweenMax.to($('#logoav,'+id),0,{delay:0,top:0});
 		} else {
-			TweenMax.to($(old),0.5,{opacity:0,display:'none'});
+			TweenMax.to($(old),0,{opacity:0,display:'none'});
 			$(id).css('display','block');
-			TweenMax.to($(id),0.5,{delay:0.5,opacity:1});
+			TweenMax.to($(id),0,{delay:0,opacity:1});
 			$(window).scrollTop(0);
 		}
 	}
