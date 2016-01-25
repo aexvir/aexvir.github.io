@@ -70,15 +70,19 @@
 	<div id="myworks" class="page">
 		<div class="content mw">
 			<div class="workitem" dir="wm">
-				<img src="src/img/wm/full/1.png" alt="writemasta">
+				<img src="src/img/wm/mid/1.png" alt="writemasta">
 				<div class="name">WriteMasta</div>
 			</div>
 			<div class="workitem" dir="cy" alt="centroyogasana">
-				<img src="src/img/cy/full/1.png">
+				<img src="src/img/cy/mid/1.png">
 				<div class="name">Centro YogaSana</div>
 			</div>
+			<div class="workitem" dir="wr">
+				<img src="src/img/wr/mid/1.png" alt="wallstreet">
+				<div class="name">WallStreet Restaurant</div>
+			</div>
 			<div class="workitem" dir="wb">
-				<img src="src/img/wb/full/1.png" alt="web">
+				<img src="src/img/wb/mid/1.png" alt="web">
 				<div class="name">Esta página web</div>
 			</div>
 		</div>
@@ -101,12 +105,12 @@
 	<div id="dynload" class="page"></div>
 	<!-- Loading Script -->
 	<script>
-		TweenMax.to($('#logoav img'),4,{delay:0.5,ease: Elastic. easeOut.config( 1.5, 0.25),rotationX:0});
+		TweenMax.to($('#logoav img'),4,{force3D:true,delay:0.5,ease: Elastic. easeOut.config( 1.5, 0.25),rotationX:0});
 		prbar = progressJs().start().autoIncrease(5, 1);
 		prbar.onprogress(function(target, percent) {
 			if(percent == 100){
 				prbar.end();
-				TweenMax.to($('#menu'),0.5,{display:'flex',ease: Sine.easeOut,top:0});
+				TweenMax.to($('#menu'),0.5,{force3D:true,display:'flex',ease: Sine.easeOut,top:0});
 				$('#topbar').html($('.active').html());
 			}
 		});
