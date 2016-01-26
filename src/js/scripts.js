@@ -70,24 +70,41 @@ function pageSwitchPc(id){
 	};
 	if(old != id){
 		if(old === '#main'){
+<<<<<<< HEAD
 			TweenMax.to($('#logoav img'),1,{autoRound:false,ease: Power3.easeOut,height:'75px',width:'123px'});
 			TweenMax.to($('#logoav'),1,{autoRound:false,ease: Power3.easeOut,height:'75px',width:'20%',left:'40%',zIndex:10});
 			TweenMax.to($('.zone'),1,{autoRound:false,ease: Power3.easeOut,width:'40%'});
 			TweenMax.to($(old),0.5,{autoRound:false,top:'-100vh',display:'none'});
+=======
+			TweenMax.to($('#logoav img'),1,{ease: Power3.easeOut,height:'75px',width:'123px'});
+			TweenMax.to($('#logoav'),1,{ease: Power3.easeOut,height:'75px',width:'20%',left:'40%',zIndex:10});
+			TweenMax.to($('.zone'),1,{ease: Power3.easeOut,width:'40%'});
+			TweenMax.to($(old),0.5,{top:'-100vh',display:'none'});
+>>>>>>> parent of c5a6a20... Modificadas animaciones
 			TweenMax.to($('#logostl'),0.5,{opacity:0,display:'none'});
 			$(id).css('display','block');
 			TweenMax.to($(id),0.25,{delay:0.5,opacity:1});
 		} else if(id === '#main'){
+<<<<<<< HEAD
 			TweenMax.to($('#logoav img'),1,{autoRound:false,ease: Power3.easeOut,height:'295px',width:'484px'});
 			TweenMax.to($('#logoav'),1,{autoRound:false,ease: Power3.easeOut,height:'100vh',width:'100vw',left:0,zIndex:2});
 			TweenMax.to($('.zone'),1,{autoRound:false,ease: Power3.easeOut,width:'50%'});
+=======
+			TweenMax.to($('#logoav img'),1,{ease: Power3.easeOut,height:'295px',width:'484px'});
+			TweenMax.to($('#logoav'),1,{ease: Power3.easeOut,height:'100vh',width:'100vw',left:0,zIndex:2});
+			TweenMax.to($('.zone'),1,{ease: Power3.easeOut,width:'50%'});
+>>>>>>> parent of c5a6a20... Modificadas animaciones
 			//$('#logostl').css('display','block');
 			TweenMax.to($('#logostl'),0.5,{opacity:1});
 			TweenMax.to($(old),0.25,{opacity:0,display:'none'});
 			$(id+',#logostl').css('display','block');
 			$('#logoav').css('display', 'flex');
 			$(id+',#logoav').css('opacity', '1');
+<<<<<<< HEAD
 			TweenMax.to($(id),0.5,{autoRound:false,top:0});
+=======
+			TweenMax.to($(id),0.5,{top:0});
+>>>>>>> parent of c5a6a20... Modificadas animaciones
 		} else {
 			if(!mobile){TweenMax.to($(old),0.25,{opacity:0,display:'none'});}
 			$(id).css('display','block');
@@ -104,7 +121,11 @@ function pageSwitchMobile(id){
 	};
 	if(old != id){
 		if(old === '#main'){
+<<<<<<< HEAD
 			TweenMax.to($('#logoav,'+old),0,{autoRound:false,top:'-100vh'});
+=======
+			TweenMax.to($('#logoav,'+old),0,{top:'-100vh'});
+>>>>>>> parent of c5a6a20... Modificadas animaciones
 			$(id).css('display','block');
 			TweenMax.to($(id),0,{delay:0,opacity:1});
 		} else if(id === '#main'){
@@ -112,7 +133,11 @@ function pageSwitchMobile(id){
 			$('#logostl').css('display','block');
 			TweenMax.to($(old),0,{opacity:0,display:'none'});
 			$(id).css('display','block');
+<<<<<<< HEAD
 			TweenMax.to($('#logoav,'+id),0,{autoRound:false,delay:0,top:0});
+=======
+			TweenMax.to($('#logoav,'+id),0,{delay:0,top:0});
+>>>>>>> parent of c5a6a20... Modificadas animaciones
 		} else {
 			TweenMax.to($(old),0,{opacity:0,display:'none'});
 			$(id).css('display','block');
