@@ -1,0 +1,63 @@
+@import "site-variables";
+
+* {
+  color: $beige;
+}
+
+html,
+body {
+  background-color: $dark-blue;
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+}
+
+@mixin display-flex {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+@mixin flex-horizontal {
+  @include display-flex();
+  flex-direction: row;
+}
+
+@mixin flex-vertical {
+  @include display-flex();
+  flex-direction: column;
+}
+
+.loading-screen-container {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-color: $dark-blue;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+}
+
+.loading-screen {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: $muted-blue;
+  top: 0;
+  right: -100vw;
+}
+
+.loading-screen-content {
+  @include flex-vertical();
+  position: absolute;
+  height: 100%;
+  width: 90%;
+  top: 0;
+  right: 0;
+  opacity: 0;
+}

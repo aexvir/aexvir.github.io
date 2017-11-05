@@ -1,124 +1,60 @@
-<html>
+<!DOCTYPE html>
+<html lang="es">
 <head>
 	<meta charset="UTF-8">
-	<meta name=viewport content="width=device-width, initial-scale=1">
-	<meta name="expires" content="sat, 01 Jan 2050">
-	<meta name="signet:authors" content="Alexandru Constantin Viscreanu">
-	<meta name="signet:links" content="http://proudh0n.github.io">
-	<meta property="og:title" content="Alex Viscreanu"/>
-	<meta property="og:url" content="http://proudh0n.github.io/"/>
-	<meta property="og:image" content="http://proudh0n.github.io/src/img/web/av.png"/>
-	<meta property="og:description" content="Web personal"/>
 	<title>Alex Viscreanu</title>
-	<script src="src/js/jquery.js"></script>
-	<script src="src/js/scripts.js"></script>
-	<script src="src/js/progress.js"></script>
-	<script async src="src/js/signet.js"></script>
-	<script src="src/js/tweenmax.js"></script>
-	<script async src="src/js/fotorama.js"></script>
-	<link rel="stylesheet" type="text/css" href="src/css/style.css">
-	<link rel="stylesheet" type="text/css" href="src/css/navicon.css">
-	<link rel="stylesheet" type="text/css" href="src/css/load.css">
-	<link rel="stylesheet" type="text/css" href="src/css/fotorama.css">
-	<link rel="stylesheet" type="text/css" href="src/fonts/FontAwesome/css/fontawesome.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css">
+	<link rel="stylesheet" href="src/css/site.css">
 </head>
 <body>
-	<!-- Loading page -->
-	<div id="main" class="page">
-		<img id="logostl" src="src/img/web/logo.png" alt="stldesign">
-	</div>
-	<div id="logoav"><img src="src/img/web/av.png" alt="alexviscreanu"></div>
-	<!-- Main menu -->
-	<!--<div id="button">
-		<a class="navicon-button x">
-			<div class="navicon"></div>
-		</a>
-	</div>
-	<div id="panel"></div>
-	<div id="topbar"></div>-->
-	<nav id="menu">
-		<div class="left zone">
-			<a class="directory active" href="javascript:;" dir="#main"><i class="fa fa-home"></i><dn class="dirname">  Inicio</dn></a>
-			<a class="directory" id="brp" href="javascript:;" dir="#aboutme"><i class="fa fa-graduation-cap"></i><dn class="dirname">  Sobre mí</dn></a>
-		</div>
-		<div class="right zone">
-			<a class="directory" href="javascript:;" dir="#myworks"><i class="fa fa-briefcase"></i><dn class="dirname">  Trabajos</dn></a>
-			<a class="directory" href="javascript:;" dir="#contact"><i class="fa fa-envelope"></i><dn class="dirname">  Contacto</dn></a>
-		</div>
-	</nav>
-	<!-- About page -->
-	<div id="aboutme" class="page">
-		<div class="content mw">
-			<div class="category 1">Información Personal</div>
-			<div class="badge bp1"><img src="src/img/web/badges/fotele.png" alt="Me"><div class="description">Yo</div></div>
-			<div class="badge"><img src="src/img/web/badges/upv.png" alt="upv"><div class="description">Estudiante Ing. Informática</div></div>
-			<div class="badge"><img src="src/img/web/badges/browser.png" alt="browser"><div class="description">Desarrollador Web Frontend</div></div>
-			<div class="badge"><img src="src/img/web/badges/linux.png" alt="linux"><div class="description">Usuario Linux</div></div>
-			<div class="category 2">Conocimientos</div>
-			<div class="badge bp2"><img src="src/img/web/badges/java.png" alt="java"><div class="description">Java</div></div>
-			<div class="badge"><img src="src/img/web/badges/python.png" alt="python"><div class="description">Python</div></div>
-			<div class="badge"><img src="src/img/web/badges/htmlcssjs.png" alt="htmlcssjs"><div class="description">HTML + CSS + JS</div></div>
-			<div class="badge"><img src="src/img/web/badges/node1.png" alt="node"><div class="description">Node.js</div></div>
-			<div class="category 3">Software que utilizo</div>
-			<a href="http://www.sublimetext.com/" target="_blank" class="badge bp3"><img src="src/img/web/badges/sublime.png" alt="sublime"><div class="description">Sublime Text</div></a>
-			<a href="http://www.adobe.com/es/products/photoshop.html" target="_blank" class="badge"><img src="src/img/web/badges/photoshop.png" alt="ps"><div class="description">Adobe Photoshop</div></a>
-			<a href="https://www.jetbrains.com/idea/" target="_blank" class="badge"><img src="src/img/web/badges/idea.png" alt="idea"><div class="description">JetBrains InteliJ Idea</div></a>
-			<a href="http://brackets.io/" target="_blank" class="badge"><img src="src/img/web/badges/brackets.png" alt="brackets"><div class="description">Brackets</div></a>
-		</div>
-	</div>
-	<!-- Works page -->
-	<div id="myworks" class="page">
-		<div class="content mw">
-			<div class="workitem" dir="wm">
-				<img src="src/img/wm/mid/1.png" alt="writemasta">
-				<div class="name">WriteMasta</div>
-			</div>
-			<div class="workitem" dir="cy" alt="centroyogasana">
-				<img src="src/img/cy/mid/1.png">
-				<div class="name">Centro YogaSana</div>
-			</div>
-			<div class="workitem" dir="wr">
-				<img src="src/img/wr/mid/1.png" alt="wallstreet">
-				<div class="name">WallStreet Restaurant</div>
-			</div>
-			<div class="workitem" dir="wb">
-				<img src="src/img/wb/mid/1.png" alt="web">
-				<div class="name">Esta página web</div>
-			</div>
-			<div class="workitem" dir="fsm">
-				<img src="src/img/fsm/mid/1.png" alt="portfolio">
-				<div class="name">Portfolio FSM</div>
+	<div class="loading-screen-container">
+		<div class="loading-screen">
+			<div class="loading-screen-content">
+				<img src="src/img/web/av.png" alt="">
 			</div>
 		</div>
 	</div>
-	<!-- Contact page -->
-	<div id="contact" class="page">
-		<div class="content mw">
-			<div class="wrapc">
-				<div class="category">Puedes encontrarme en...</div>
-				<div class="wrapi">
-					<a href="mailto:alexviscreanu@gmail.com" class="badge"><img src="src/img/web/badges/gmail.png" alt="gmail"><div class="description">alexviscreanu@gmail.com</div></a>
-				<a href="http://google.com/+AlexViscreanu-stlDesign" target="_blank" class="badge"><img src="src/img/web/badges/googleplus.png" alt="google+"><div class="description">+AlexViscreanu-stlDesign</div></a>
-				<a href="http://stayl.deviantart.com/" target="_blank" class="badge"><img src="src/img/web/badges/deviantart.png" alt="dart"><div class="description">Deviantart</div></a>
-				<a href="https://www.facebook.com/alex.viscreanu" class="badge"><img src="src/img/web/badges/facebook.png" alt="facebook"><div class="description">Facebook</div></a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Dynamic load page -->
-	<div id="dynload" class="page"></div>
-	<!-- Loading Script -->
+
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.0/velocity.min.js"></script>
+
 	<script>
-		TweenMax.to($('#logoav img'),4,{force3D:true,delay:0.5,ease: Elastic. easeOut.config( 1.5, 0.25),rotationX:0});
-		prbar = progressJs().start().autoIncrease(5, 1);
-		prbar.onprogress(function(target, percent) {
-			if(percent == 100){
-				prbar.end();
-				TweenMax.to($('#menu'),0.5,{force3D:true,display:'flex',ease: Sine.easeOut,top:0});
-				$('#topbar').html($('.active').html());
-			}
+		var durationRatio = 0.75;
+		var bezierValues = [.485,.46,.05,.995];
+	</script>
+	<script>
+		$('.loading-screen').velocity({translateX: '-100vw'}, bezierValues, 1000 * durationRatio);
+		$('.loading-screen-content').velocity({
+			opacity: 1,
+			width: '100%'
+		}, {
+			delay: 750 * durationRatio,
+			duration: 750 * durationRatio,
+			easing: bezierValues
 		});
-		$(document).ready(setTimeout(function(){prbar.set(100);},3000));
+	</script>
+
+	<script>
+		$(window).on('load', function () {
+			$('.loading-screen-content').velocity({
+				opacity: 0,
+				translateX: '-20%'
+			}, {
+				delay: 1500 * durationRatio,
+				duration: 750 * durationRatio,
+				easing: bezierValues
+			});
+			$('.loading-screen-container').velocity({
+				translateX: '-100vw'
+			}, {
+				delay: 3750 * durationRatio,
+				duration: 1000 * durationRatio,
+				easing: bezierValues
+			});
+		});
 	</script>
 </body>
+<footer>
+	
+</footer>
 </html>
