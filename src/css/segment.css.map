@@ -1,10 +1,1 @@
-{
-	"version": 3,
-	"file": "segment.css",
-	"sources": [
-		"../scss/segment.scss",
-		"../scss/_variables.scss"
-	],
-	"mappings": "AAEA,AAAA,QAAQ,CAAC;EACP,OAAO,EAAE,SAAU;EACnB,aAAa,EAAE,YAAa;EAC5B,UAAU,ECJG,OAAO;EDKpB,MAAM,EAAE,GAAG,CAAC,KAAK,CAAC,OAAM;EACxB,KAAK,ECLM,OAAO;EDMlB,UAAU,EAAE,CAAC,CAAC,GAAG,CAAC,GAAG,CAAC,CAAC,CAAC,sBAAI,EAAgB,CAAC,CAAC,GAAG,CAAC,IAAI,CAAC,CAAC,CAAC,sBAAI;EAC7D,aAAa,EAAE,IAAK;EACpB,QAAQ,EAAE,QAAS,GACpB;;AAED,AAAK,KAAA,AAAA,QAAQ,CAAC;EACZ,cAAc,EAAE,MAAO,GACxB",
-	"names": []
-}
+{"version":3,"sources":["segment.scss"],"names":[],"mappings":"AAEA,Q,CACE,Y,CACA,0B,CACA,kB,CACA,wB,CACA,a,CACA,yE,CACA,kB,CACA,iB,CAGF,a,CACE,qB","file":"segment.css","sourcesContent":["@import 'variables';\n\n.segment {\n  padding: 1rem;\n  border-radius: .28571429rem;\n  background: $element-gray;\n  border: 1px solid darken($element-gray, 2.5%);\n  color: $light-text;\n  box-shadow: 0 2px 4px 0 rgba(34,36,38,.12), 0 2px 10px 0 rgba(34,36,38,.15);\n  margin-bottom: 1rem;\n  position: relative;\n}\n\n.wide.segment {\n  padding-bottom: 56.25%;\n}\n"]}

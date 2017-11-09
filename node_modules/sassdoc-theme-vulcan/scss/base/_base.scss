@@ -1,0 +1,138 @@
+/**
+ * Univeral box-sizing reset
+ */
+html {
+    box-sizing: border-box;
+}
+
+*, *::after, *::before {
+    box-sizing: inherit;
+}
+
+/**
+ * Body rules
+ */
+body {
+    font: 1em/1.35 'Lato', 'Helvetica', sans-serif;
+    overflow: auto;
+    margin: 0;
+}
+
+/**
+ * Links
+ */
+a {
+    transition: .15s;
+    text-decoration: none;
+    color: color("red");
+
+    &:hover {
+        &, code {
+            color: color("dark-grey");
+        }
+    }
+}
+
+/**
+ * Code
+ */
+:not(pre) > code {
+    padding: 2px 4px;
+    font-family: 'Lato', 'Helvetica', sans-serif;
+    font-weight: normal;
+    color: color("red");
+    background-color: white;
+    white-space: nowrap;
+    border-radius: 3px;
+    display: inline-block;
+    border: solid 2px color("lightest-grey");
+}
+
+/**
+ * Tables
+ */
+@include respond-to("small") {
+    table, tbody, tr, td, th {
+        display: block;
+    }
+
+    thead {
+        @include visually-hidden($extend: false);
+    }
+
+    tr {
+        padding-bottom: 1em;
+        margin-bottom: 1em;
+        border-bottom: 2px solid color("medium-grey");
+    }
+
+    td, th {
+        &::before {
+            content: attr(data-label) ': ';
+            text-transform: capitalize;
+            font-weight: bold;
+        }
+
+        p {
+            display: inline;
+        }
+    }
+}
+
+/**
+ * Lists
+ */
+.list-unstyled {
+    padding-left: 0;
+    list-style: none;
+    line-height: 1.5;
+}
+
+.list-inline li {
+    @include inline-block;
+}
+
+/**
+ * Main container
+ */
+.container {
+    @include clearfix;
+    max-width: 100%;
+    width: 1170px;
+    margin: 0 auto;
+    padding: 0 2em;
+}
+
+/**
+ * Visually-hidden
+ */
+.visually-hidden {
+    @include visually-hidden;
+}
+
+/**
+ * Relative
+ */
+.relative {
+    position: relative;
+}
+
+/**
+ * Clear
+ */
+.clear {
+    clear: both;
+}
+
+.button {
+    border: 2px solid #333;
+    color: #333;
+    padding: 1em 3em;
+    display: inline-block;
+    border-radius: 3px;
+    
+    &:hover, &:focus {
+        background: color("lightest-grey");
+        border-color: color("medium-grey");
+    }
+}

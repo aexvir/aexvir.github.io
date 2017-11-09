@@ -1,0 +1,25 @@
+{
+  "sass": {
+    "outputStyle": "compact"
+  },
+  "sassdoc": {
+    "dest": "",
+    "display": {
+      "access": ["public"],
+      "watermark": false
+    },
+    "groups": {
+      "provider-ui": "Provider UI"
+    }
+  },
+  "autoprefixer": {
+    "browsers": [
+      "last 2 versions",
+      ">5%"
+    ]
+  },
+  "uglify": {
+    "mangle": true,
+    "compress": true
+  }
+}

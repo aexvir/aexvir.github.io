@@ -14,6 +14,29 @@ body {
 }
 
 /*General*/
+.element {
+  background-position: center center;
+  background-size: cover;
+  overflow: hidden;
+  
+  .title {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 1.5rem;
+    padding: .5rem 0;
+    background: $element-gray;
+    margin: 0 -1rem;
+  }
+}
+
+.main.element {
+  .title {
+    font-size: 2rem;
+    padding: 1rem 0;
+  }
+}
 
 /*Main menu*/
 #menu {
