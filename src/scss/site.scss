@@ -1,0 +1,131 @@
+@import 'variables';
+@import 'container';
+@import 'segment';
+
+/*General style*/
+html {
+  background-color: $background-gray;
+}
+body {
+  margin: 0;
+  background: url(../img/web/pattern.png);
+  height: 100%;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+/*General*/
+
+/*Main menu*/
+#menu {
+  @include flex-horizontal();
+  position: fixed;
+  z-index: 5;
+  left: 0;
+  width: 100vw;
+  height: 3.5rem;
+  justify-content: space-between;
+  top: -1rem;
+  opacity: 0;
+
+  .spacer {
+    width: 0;
+  }
+
+  .directory {
+    color: $light-text;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    height: 100%;
+    line-height: 3.5rem;
+
+    &:hover {
+      .hidden {
+        top: 50%;
+        opacity: 1;
+      }
+
+      .visible {
+        transform: translateY(200%);
+        opacity: 0;
+      }
+    }
+
+    .hidden {
+      position: absolute;
+      top: -50%;
+      margin-top: -.5em;
+      opacity: 0;
+    }
+
+    .visible {
+      position: relative;
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .hidden,
+    .visible {
+      will-change: transform,opacity;
+      width: 100%;
+      text-align: center;
+      transition: top .5s ease, transform .5s ease, opacity .125s ease;
+    }
+  }
+}
+
+/*Page cover*/
+#page-cover {
+  position: fixed;
+  z-index: 1;
+  display: block;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  background: url(../img/web/ae.jpg);
+}
+
+/*Av logo*/
+#av-logo {
+  @include flex-vertical();
+  position: fixed;
+  z-index: 2;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  perspective: 600px !important;
+
+  img {
+    display: block;
+    height: auto;
+    max-height: 50vh;
+    max-width: 50vw;
+    width: auto;
+    height: auto;
+    transform: rotateX(90deg);
+    align-self:center;
+  }
+}
+
+/*Page*/
+#page-container-wrapper {
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+#page-container {
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+}
+
+.page-content {
+  display: none;
+}
