@@ -1,4 +1,5 @@
 @import 'variables';
+@import 'mixins';
 @import 'container';
 @import 'segment';
 
@@ -14,11 +15,25 @@ body {
 }
 
 /*General*/
+@media only screen and (max-width: 767px) {
+  .responsive.grid {
+    flex-direction: column;
+
+    .col {
+      width: 100%;
+      padding: 0 .5rem 0;
+    }
+  }
+}
+
 .element {
   background-position: center center;
   background-size: cover;
+  background-repeat: no-repeat;
   overflow: hidden;
-  
+  cursor: pointer;
+  transition: transform 0.5s ease;
+
   .title {
     position: absolute;
     bottom: 0;
@@ -26,8 +41,17 @@ body {
     text-align: center;
     font-size: 1.5rem;
     padding: .5rem 0;
-    background: $element-gray;
+    background-color: $element-gray;
     margin: 0 -1rem;
+    transition: background-color 0.5s ease;
+  }
+
+  &:hover {
+    transform: scale(1.0125);
+
+    .title {
+      background: $blue;
+    }
   }
 }
 

@@ -1,0 +1,37 @@
+{
+  "name": "dev-utils",
+  "version": "1.0.0",
+  "description": "Utilites to make our lifes easier",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aravolo/dev-utils.git"
+  },
+  "author": "Alex Viscreanu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aravolo/dev-utils/issues"
+  },
+  "homepage": "https://github.com/aravolo/dev-utils",
+  "devDependencies": {
+    "autoprefixer": "^6.3.6",
+    "gulp": "^3.9.1",
+    "gulp-csso": "^2.0.0",
+    "gulp-optimize-js": "^1.1.0",
+    "gulp-postcss": "^6.1.1",
+    "gulp-sass": "^2.3.1",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^2.0.0",
+    "gulp-util": "^3.0.7",
+    "node-notifier": "^4.6.1",
+    "optimize-js": "^1.0.2",
+    "sassdoc": "^2.1.20"
+  },
+  "dependencies": {
+    "sassdoc-theme-vulcan": "^0.2.0"
+  },
+  "keywords": []
+}
