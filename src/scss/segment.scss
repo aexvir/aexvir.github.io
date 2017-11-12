@@ -2,7 +2,7 @@
 @import 'mixins';
 
 .segment {
-  @include box-shadow(0, .15rem, 1rem, $element-gray-darker);
+  @include box-shadow(0, .15rem, 1rem, $dark-shadow);
   padding: 1rem;
   border-radius: .28571429rem;
   background: $element-gray;

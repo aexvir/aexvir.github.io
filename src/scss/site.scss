@@ -30,9 +30,15 @@ body {
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
-  overflow: hidden;
-  cursor: pointer;
-  transition: transform 0.5s ease;
+  
+  &:not(.gallery) {
+    overflow: hidden;
+  }
+  
+  &:not(.static) {
+    cursor: pointer;
+    transition: transform 0.5s ease;
+  }
 
   .title {
     position: absolute;
@@ -46,20 +52,67 @@ body {
     transition: background-color 0.5s ease;
   }
 
-  &:hover {
-    transform: scale(1.0125);
+  &:not(.static) {
+    &:hover {
+      transform: scale(1.0125);
 
-    .title {
-      background: $blue;
+      .title {
+        background: $blue;
+      }
     }
-  }
+  } 
 }
 
 .main.element {
   .title {
     font-size: 2rem;
-    padding: 1rem 0;
+    padding: .5rem 0;
   }
+}
+
+.gallery.element {
+    .button {
+        @include flex-vertical();
+        @include box-shadow(0, .15rem, 1rem, $dark-shadow);
+        position: absolute;
+        background-color: $blue;
+        height: 3rem;
+        width: 3rem;
+        border-radius: 1.5rem;
+        top: calc(50% - 1.5rem);
+        transition: background-color .5s ease;
+        cursor: pointer;
+        
+        &:hover {
+            background-color: $magenta;
+        }
+    }
+    
+    .prev {
+        left: -1.5rem;
+        right: auto;
+        
+        i {
+            margin-left: -.25rem;
+        }
+    }
+    
+    .next {
+        left: auto;
+        right: -1.5rem;
+        
+        i {
+            margin-right: -.25rem;
+        }
+    }
+}
+
+.hero-header {
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
 }
 
 /*Main menu*/
