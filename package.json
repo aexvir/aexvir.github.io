@@ -4,7 +4,9 @@
   "description": "Utilites to make our lifes easier",
   "main": "gulpfile.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lite": "lite-server --port 10001",
+    "start": "npm run lite"
   },
   "repository": {
     "type": "git",
@@ -26,6 +28,7 @@
     "gulp-sourcemaps": "^1.6.0",
     "gulp-uglify": "^2.0.0",
     "gulp-util": "^3.0.7",
+    "lite-server": "^2.3.0",
     "node-notifier": "^4.6.1",
     "optimize-js": "^1.0.2",
     "sassdoc": "^2.1.20"
