@@ -30,10 +30,9 @@ body {
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
-  
-  &:not(.gallery) {
-    overflow: hidden;
-  }
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translateZ(0) scale(1.0, 1.0);
+  transform: translateZ(0);
   
   &:not(.static) {
     cursor: pointer;
@@ -42,7 +41,7 @@ body {
 
   .title {
     position: absolute;
-    bottom: 0;
+    bottom: -1px;
     width: 100%;
     text-align: center;
     font-size: 1.5rem;
@@ -50,11 +49,12 @@ body {
     background-color: $element-gray;
     margin: 0 -1rem;
     transition: background-color 0.5s ease;
+    border-radius: 0 0 .28571429rem .28571429rem;
   }
 
   &:not(.static) {
     &:hover {
-      transform: scale(1.0125);
+      transform: scale(1.0125, 1.0125);
 
       .title {
         background: $blue;
@@ -107,12 +107,19 @@ body {
     }
 }
 
+.information {
+  color: $light-text;
+}
+
 .hero-header {
     width: 100%;
     height: 100vh;
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 
 /*Main menu*/
@@ -122,7 +129,8 @@ body {
   z-index: 5;
   left: 0;
   width: 100vw;
-  height: 3.5rem;
+  height: 4rem;
+  padding-bottom: 1.5rem;
   justify-content: space-between;
   top: -1rem;
   opacity: 0;
@@ -141,7 +149,7 @@ body {
     cursor: pointer;
     overflow: hidden;
     height: 100%;
-    line-height: 3.5rem;
+    line-height: 4rem;
 
     &:hover {
       .hidden {
@@ -195,21 +203,24 @@ body {
   @include flex-vertical();
   position: fixed;
   z-index: 2;
-  height: 100vh;
-  width: 100vw;
-  top: 0;
-  left: 0;
   perspective: 600px !important;
+  transition: filter .5s ease;
+  z-index: 10;
 
   img {
     display: block;
-    height: auto;
-    max-height: 50vh;
-    max-width: 50vw;
-    width: auto;
-    height: auto;
+    height: 18rem;
+    width: 32rem;
     transform: rotateX(90deg);
     align-self:center;
+  }
+
+  &:hover {
+    filter: brightness(1.5) !important;
+  }
+
+  &.reduced {
+    filter: brightness(0) invert(1);
   }
 }
 

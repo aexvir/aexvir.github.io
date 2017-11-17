@@ -3,6 +3,10 @@
   display: block;
   max-width: 100% !important;
   padding-top: 5rem;
+
+  &.inline {
+    padding-top: 0;
+  }
 }
 
 /* Mobile */

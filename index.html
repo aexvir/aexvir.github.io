@@ -3,8 +3,6 @@
 	<meta charset="UTF-8">
 	<meta name=viewport content="width=device-width, initial-scale=1">
 	<meta name="expires" content="sat, 01 Jan 2050">
-	<meta name="signet:authors" content="Alexandru Constantin Viscreanu">
-	<meta name="signet:links" content="http://alexviscreanu.com">
 	<title>Alex Viscreanu</title>
 
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
@@ -57,7 +55,7 @@
 	<div id="page-cover"></div>
 
 	<div id="av-logo">
-		<img src="static/img/web/av.png" alt="Alex Viscreanu">
+		<img src="static/img/web/logo.svg" alt="Alex Viscreanu">
 	</div>
 
 	<div id="page-container-wrapper">
@@ -111,11 +109,10 @@
 	<div id="dynamic" class="page-content"></div>
 
 	<script>
+		TweenMax.set('#av-logo', {x: '-50%', y: '-50%', left: '50%', top: '50%'});
 		TweenMax.to($('#av-logo img'), 4, {delay: 0.5, ease: Elastic.easeOut.config( 1.5, 0.25), rotationX: 0});
 		TweenMax.to($('#menu'), .75, {delay: 0.5, ease: Power4.easeOut, top: 0, opacity: 1});
 	</script>
-
-	<script async src="src/js/signet.js"></script>
 
 	<script>
 		var pageContainer = $('#page-container');
@@ -126,10 +123,10 @@
 			}});
 		}
 		function slideCoverUp(reverse, callback) {
-			TweenMax.to($('#av-logo img'), 1, {ease: Power4.easeOut, scale: (reverse ? 1 : 1)});
-			TweenMax.to($('#av-logo'), 1, {ease: Power4.easeOut, scale: (reverse ? 1 : 0.25), height: (reverse ? '100vh' : '5rem')});
+			TweenMax.to($('#av-logo'), 1, {ease: Power4.easeOut, scale: (reverse ? 1 : 0.225), top: (reverse ? '50%' : '5%')});
 			TweenMax.to($('#menu .spacer'), 1, {ease: Power4.easeOut, width: (reverse ? '0' : '100%')});
-			TweenMax.to($('#page-cover'), 0.5, {top: (reverse ? '0' : '-100vh'), display: (reverse ? 'block' : 'none'), onComplete: callback});
+			TweenMax.to($('#page-cover'), 0.5, {y: (reverse ? '0%' : '-100%'), display: (reverse ? 'block' : 'none'), onComplete: callback});
+			$('#av-logo').toggleClass('reduced', !reverse)
 		}
 		$(document).on('click', '.directory', function() {
 			var clickedElement = $(this);
@@ -155,6 +152,22 @@
             replacePageContent('dynamic');
             pageContainer.attr('data-contains', 'dynamic');
         });
+
+		$('#page-container').scroll(function(){
+			window.requestAnimationFrame(scrollHero);
+		});
+
+		function scrollHero() {
+			var scrollVar = $('#page-container').scrollTop().toFixed(2);
+			if(scrollVar < 500) {
+				var opacity = Math.max((100 - .5 * scrollVar)/100, 0);
+				$('#menu').css('background', 'linear-gradient(to bottom, rgba(35, 35, 35, ' + (1 - opacity) + '), rgba(0, 0, 0, 0))');
+				console.log(opacity)
+				$('.hero-header').css({
+					'opacity': opacity
+				});
+			}
+		}
 	</script>
 </body>
 </html>
