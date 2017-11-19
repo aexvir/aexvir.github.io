@@ -130,7 +130,6 @@ body {
   left: 0;
   width: 100vw;
   height: 4rem;
-  padding-bottom: 1.5rem;
   justify-content: space-between;
   top: -1rem;
   opacity: 0;
@@ -221,6 +220,7 @@ body {
 
   &.reduced {
     filter: brightness(0) invert(1);
+    cursor: pointer;
   }
 }
 
