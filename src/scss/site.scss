@@ -27,12 +27,18 @@ body {
 }
 
 .element {
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
   -webkit-backface-visibility: hidden;
   -webkit-transform: translateZ(0) scale(1.0, 1.0);
   transform: translateZ(0);
+  padding: 0;
+  border-radius: .28571429rem;
+  overflow: hidden;
+
+  img {
+    height: auto;
+    width: auto;
+    max-width: 100%;
+  }
   
   &:not(.static) {
     cursor: pointer;
@@ -47,7 +53,6 @@ body {
     font-size: 1.5rem;
     padding: .5rem 0;
     background-color: $element-gray;
-    margin: 0 -1rem;
     transition: background-color 0.5s ease;
     border-radius: 0 0 .28571429rem .28571429rem;
   }
