@@ -72,7 +72,7 @@
 
 	<div id="portfolio" class="page-content">
 		<div class="container">
-			<div class="segment main project element" data-content="aravolo.html">
+			<div class="segment main project element" data-content="aravolo.html" data-background="static/img/portfolio/aravolo/header.png">
 				<img src="static/img/portfolio/aravolo/main.png" alt="">
 				<div class="title">aravolo</div>
 			</div>
@@ -125,49 +125,26 @@
 
 	<script>
 		var pageContainer = $('#page-container');
-		function replacePageContent(page, fromHome) {
+
+		function replacePageContent(page, fromHome, onHiddenCallback) {
 			TweenMax.to('#page-container', (fromHome ? 0 : .5), {ease: Power4.easeOut, y: '+=25', opacity: 0, onComplete: function () {
 				pageContainer.html($('#' + page).html())
+				if(typeof onHiddenCallback === 'function')
+					onHiddenCallback();
 				TweenMax.to('#page-container', .5, {ease: Power4.easeOut, y: '-=25', opacity: 1});
 			}});
 		}
+
 		function slideCoverUp(reverse, callback) {
-			TweenMax.to($('#av-logo'), 1, {ease: Power4.easeOut, scale: (reverse ? 1 : 0.2), top: (reverse ? '50%' : '4%')});
+			TweenMax.to($('#av-logo'), 1, {ease: Power4.easeOut, scale: (reverse ? 1 : 0.2), top: (reverse ? '50%' : '2rem')});
 			TweenMax.to($('#menu .spacer'), 1, {ease: Power4.easeOut, width: (reverse ? '0' : '100%')});
 			TweenMax.to($('#page-cover'), 0.5, {y: (reverse ? '0%' : '-100%'), display: (reverse ? 'block' : 'none'), onComplete: callback});
 			$('#av-logo').toggleClass('reduced', !reverse)
 		}
-		$(document).on('click', '.directory', function() {
-			var clickedElement = $(this);
-			var currentPage = pageContainer.attr('data-contains');
-			var newPage = clickedElement.attr('data-dir');
-
-			if(currentPage !== newPage) {
-				if(currentPage === 'home') {
-					slideCoverUp(false, function () {
-						replacePageContent(newPage, true);
-					});
-				} else if (newPage === 'home') {
-					replacePageContent(newPage);
-					slideCoverUp(true);
-				} else {
-					replacePageContent(newPage);
-				}
-				pageContainer.attr('data-contains', newPage);
-			}
-		});
-        $(document).on('click', '.project', function () {
-            $('#dynamic').load('/static/html/' + $(this).attr('data-content'));
-            replacePageContent('dynamic');
-            pageContainer.attr('data-contains', 'dynamic');
-		});
-
-		$('#page-container').scroll(function(){
-			window.requestAnimationFrame(scrollHero);
-		});
 
 		function scrollHero() {
 			var scrollVar = $('#page-container').scrollTop().toFixed(2);
+
 			if(scrollVar < 500) {
 				var opacity = Math.max((100 - .5 * scrollVar)/100, 0);
 				
@@ -183,12 +160,43 @@
 				}
 
 				$('#menu').css(menuStyling);
-				console.log(opacity)
-				$('.hero-header').css({
-					'opacity': opacity
-				});
 			}
 		}
+
+		$(document).on('click', '.directory', function() {
+			var clickedElement = $(this);
+			var currentPage = pageContainer.data('contains');
+			var newPage = clickedElement.data('dir');
+
+			if(currentPage !== newPage) {
+				if(currentPage === 'home') {
+					slideCoverUp(false, function () {
+						replacePageContent(newPage, true);
+					});
+				} else if (newPage === 'home') {
+					replacePageContent(newPage);
+					slideCoverUp(true);
+				} else {
+					replacePageContent(newPage);
+				}
+				pageContainer.data('contains', newPage);
+			}
+
+			pageContainer.css('background-image', 'none');
+		});
+
+        $(document).on('click', '.project', function () {
+			var clickedProject = $(this);
+            $('#dynamic').load('/static/html/' +clickedProject.data('content'));
+            replacePageContent('dynamic', false, function () {
+				pageContainer.css('background-image', 'linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .6) ), url(' + clickedProject.data('background') + ')');
+			});
+            pageContainer.data('contains', 'dynamic');
+		});
+
+		$('#page-container').scroll(function(){
+			window.requestAnimationFrame(scrollHero);
+		});
 	</script>
 </body>
 </html>

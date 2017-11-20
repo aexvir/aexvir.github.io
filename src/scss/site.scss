@@ -76,40 +76,44 @@ body {
 }
 
 .gallery.element {
-    .button {
-        @include flex-vertical();
-        @include box-shadow(0, .15rem, 1rem, $dark-shadow);
-        position: absolute;
-        background-color: $blue;
-        height: 3rem;
-        width: 3rem;
-        border-radius: 1.5rem;
-        top: calc(50% - 1.5rem);
-        transition: background-color .5s ease;
-        cursor: pointer;
-        
-        &:hover {
-            background-color: $magenta;
-        }
-    }
-    
-    .prev {
-        left: -1.5rem;
-        right: auto;
-        
-        i {
-            margin-left: -.25rem;
-        }
-    }
-    
-    .next {
-        left: auto;
-        right: -1.5rem;
-        
-        i {
-            margin-right: -.25rem;
-        }
-    }
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  .button {
+      @include flex-vertical();
+      @include box-shadow(0, .15rem, 1rem, $dark-shadow);
+      position: absolute;
+      background-color: $blue;
+      height: 3rem;
+      width: 3rem;
+      border-radius: 1.5rem;
+      top: calc(50% - 1.5rem);
+      transition: background-color .5s ease;
+      cursor: pointer;
+      
+      &:hover {
+          background-color: $magenta;
+      }
+  }
+  
+  .prev {
+      left: -1.5rem;
+      right: auto;
+      
+      i {
+          margin-left: -.25rem;
+      }
+  }
+  
+  .next {
+      left: auto;
+      right: -1.5rem;
+      
+      i {
+          margin-right: -.25rem;
+      }
+  }
 }
 
 .information {
@@ -240,6 +244,9 @@ body {
   height: 100%;
   width: 100%;
   overflow: auto;
+  background-size: cover;
+  background-position: center center;
+  background-size: cover;
 }
 
 .page-content {
