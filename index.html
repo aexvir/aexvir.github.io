@@ -198,5 +198,16 @@
 			window.requestAnimationFrame(scrollHero);
 		});
 	</script>
+	<script>
+		$(document).on('click', '.gallery>.button', function() {
+			var clickedButton = $(this);
+			console.log('clicky')
+			if(clickedButton.hasClass('next')) {
+				TweenMax.to('.gallery>ul>li:first-child', .5, {marginLeft: '-=100%'});
+			} else {
+				TweenMax.to('.gallery>ul>li:first-child', .5, {marginLeft: '+=100%'});
+			}
+		});
+	</script>
 </body>
 </html>

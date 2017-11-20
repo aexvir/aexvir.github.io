@@ -76,14 +76,13 @@ body {
 }
 
 .gallery.element {
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  position: relative;
 
   .button {
       @include flex-vertical();
       @include box-shadow(0, .15rem, 1rem, $dark-shadow);
       position: absolute;
+      z-index: 1;
       background-color: $blue;
       height: 3rem;
       width: 3rem;
@@ -98,7 +97,7 @@ body {
   }
   
   .prev {
-      left: -1.5rem;
+      left: 1.5rem;
       right: auto;
       
       i {
@@ -108,11 +107,33 @@ body {
   
   .next {
       left: auto;
-      right: -1.5rem;
+      right: 1.5rem;
       
       i {
           margin-right: -.25rem;
       }
+  }
+
+  ul {
+    @include flex-horizontal();
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    list-style:none;
+    justify-content: flex-start;
+
+    li, img {
+      flex: 1 0 100%;
+      height: 100%;
+      width: 100%;
+    }
   }
 }
 
