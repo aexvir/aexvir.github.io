@@ -67,7 +67,10 @@
 	<div id="home" class="page-content"></div>
 
 	<div id="about" class="page-content">
-		<div style="margin: 5rem; background: blue; height: 2000px;">ABOUT ME</div>
+		<div class="resume container">
+			<div class="sidebar">foo</div>
+			<div class="content">bar</div>
+		</div>
 	</div>
 
 	<div id="portfolio" class="page-content">
@@ -167,6 +170,8 @@
 			var clickedElement = $(this);
 			var currentPage = pageContainer.data('contains');
 			var newPage = clickedElement.data('dir');
+			$('.selected.directory').removeClass('selected');
+			clickedElement.addClass('selected');
 
 			if(currentPage !== newPage) {
 				if(currentPage === 'home') {
@@ -189,7 +194,8 @@
 			var clickedProject = $(this);
             $('#dynamic').load('/static/html/' +clickedProject.data('content'));
             replacePageContent('dynamic', false, function () {
-				pageContainer.css('background-image', 'linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .6) ), url(' + clickedProject.data('background') + ')');
+				//pageContainer.css('background-image', 'linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .6) ), url(' + clickedProject.data('background') + ')');
+				pageContainer.css('background-image', 'linear-gradient(0deg, rgba(24,24,24,1) 20%, rgba(22,22,22,0.85) 50%, rgba(22,22,22,0.75) 100%), url(' + clickedProject.data('background') + ')');
 			});
             pageContainer.data('contains', 'dynamic');
 		});

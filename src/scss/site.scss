@@ -26,12 +26,17 @@ body {
   }
 }
 
+.disabled {
+  pointer-events: none;
+  opacity: .5;
+}
+
 .element {
   -webkit-backface-visibility: hidden;
   -webkit-transform: translateZ(0) scale(1.0, 1.0);
   transform: translateZ(0);
   padding: 0;
-  border-radius: .28571429rem;
+  border-radius: $radius;
   overflow: hidden;
 
   img {
@@ -54,7 +59,7 @@ body {
     padding: .5rem 0;
     background-color: $element-gray;
     transition: background-color 0.5s ease;
-    border-radius: 0 0 .28571429rem .28571429rem;
+    border-radius: 0 0 $radius $radius;
   }
 
   &:not(.static) {
@@ -182,13 +187,12 @@ body {
 
     &:hover {
       .hidden {
-        top: 50%;
+        top: 35%;
         opacity: 1;
       }
 
       .visible {
-        transform: translateY(200%);
-        opacity: 0;
+        transform: translateY(20%);
       }
     }
 
@@ -210,7 +214,7 @@ body {
       will-change: transform,opacity;
       width: 100%;
       text-align: center;
-      transition: top .5s ease, transform .5s ease, opacity .125s ease;
+      transition: top .35s ease, transform .5s ease, opacity .125s ease;
     }
   }
 }
@@ -272,4 +276,19 @@ body {
 
 .page-content {
   display: none;
+}
+
+/*About*/
+.resume.container {
+  @include flex-horizontal();
+
+  .sidebar {
+    background: $resume-sidebar-gray;
+    width: 30%;
+    border-radius: $radius;
+  }
+
+  .content {
+    width: 100%;
+  }
 }
