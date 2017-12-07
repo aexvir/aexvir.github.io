@@ -1,7 +1,3 @@
-/*
-    Gulp file for Aravolo development
- */
-
 var gulp = require('gulp');
 var sass = require('gulp-sass');
 var postcss = require('gulp-postcss');

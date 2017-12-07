@@ -66,9 +66,60 @@
 
 	<div id="home" class="page-content"></div>
 
-	<div id="about" class="page-content">
+	<div id="about" class="page-content" data-background="static/img/web/code.png">
 		<div class="resume container">
-			<div class="sidebar">foo</div>
+			<div class="sidebar">
+				<img src="http://via.placeholder.com/500x500" alt="Photo">
+				<div class="section">
+					<h3>Summary</h2>
+					<p>Creative full stack developer that aims to offer the best user experience in each product. I have a great ability to solve problems as well as to debug and resolve errors. I have experience in each of the stages of the development cycle of a web project, participating proactively in them.</p>
+				</div>
+				<div class="section">
+					<h3>Contact info</h2>
+					<div class="info bullet">
+						<i class="fa fa-user"></i>
+						<div class="data">
+							<h4>Name</h4>
+							<p>Viscreanu, Alexandru Constantin</p>
+						</div>
+					</div>
+					<div class="info bullet">
+						<i class="fa fa-phone"></i>
+						<div class="data">
+							<h4>Phone</h4>
+							<p>+34 662 61 91 26</p>
+						</div>
+					</div>
+					<div class="info bullet">
+						<i class="fa fa-envelope"></i>
+						<div class="data">
+							<h4>Email</h4>
+							<p><a href="mailto:alexviscreanu@gmail.com">alexviscreanu@gmail.com</a></p>
+						</div>
+					</div>
+					<div class="info bullet">
+						<i class="fa fa-linkedin"></i>
+						<div class="data">
+							<h4>LinkedIn</h4>
+							<p><a href="https://linkedin.com/in/alexviscreanu">linkedin.com/in/alexviscreanu</a></p>
+						</div>
+					</div>
+					<div class="info bullet">
+						<i class="fa fa-github"></i>
+						<div class="data">
+							<h4>GitHub</h4>
+							<p><a href="https://github.com/proudh0n">github.com/proudh0n</a></p>
+						</div>
+					</div>
+					<div class="info bullet">
+						<i class="fa fa-globe"></i>
+						<div class="data">
+							<h4>Website</h4>
+							<p><a href="https://alexviscreanu.com">alexviscreanu.com</a></p>
+						</div>
+					</div>
+				</div>
+			</div>
 			<div class="content">bar</div>
 		</div>
 	</div>
@@ -87,7 +138,7 @@
 					</div>
 					<div class="segment project element">
 						<img src="http://via.placeholder.com/1920x1080" alt="">
-                        <div class="title">Dummy title</div>
+						<div class="title">Dummy title</div>
 					</div>
 				</div>
 				<div class="col">
@@ -97,17 +148,17 @@
 					</div>
 					<div class="segment project element">
 						<img src="http://via.placeholder.com/1920x1080" alt="">
-                        <div class="title">Dummy title</div>
+						<div class="title">Dummy title</div>
 					</div>
 				</div>
 				<div class="col">
 					<div class="segment project element">
 						<img src="http://via.placeholder.com/1920x1080" alt="">
-                        <div class="title">Dummy title</div>
+						<div class="title">Dummy title</div>
 					</div>
 					<div class="segment project element">
 						<img src="http://via.placeholder.com/1920x1080" alt="">
-                        <div class="title">Dummy title</div>
+						<div class="title">Dummy title</div>
 					</div>
 				</div>
 			</div>
@@ -130,8 +181,10 @@
 		var pageContainer = $('#page-container');
 
 		function replacePageContent(page, fromHome, onHiddenCallback) {
-			TweenMax.to('#page-container', (fromHome ? 0 : .5), {ease: Power4.easeOut, y: '+=25', opacity: 0, onComplete: function () {
+			TweenMax.to(pageContainer, (fromHome ? 0 : .5), {ease: Power4.easeOut, y: '+=25', opacity: 0, onComplete: function () {
 				pageContainer.html($('#' + page).html())
+				pageContainer.scrollTop(0);
+				pageContainer.css('background-image', 'none');
 				if(typeof onHiddenCallback === 'function')
 					onHiddenCallback();
 				TweenMax.to('#page-container', .5, {ease: Power4.easeOut, y: '-=25', opacity: 1});
@@ -174,30 +227,40 @@
 			clickedElement.addClass('selected');
 
 			if(currentPage !== newPage) {
+				console.log('click ' + newPage)
 				if(currentPage === 'home') {
-					slideCoverUp(false, function () {
-						replacePageContent(newPage, true);
-					});
+					if(newPage === 'about') {
+						slideCoverUp(false, function () {
+							replacePageContent(newPage, true, function () {
+								pageContainer.css('background-image', 'linear-gradient(0deg, rgba(24,24,24,1) 20%, rgba(22,22,22,0.85) 50%, rgba(22,22,22,0.75) 100%), url(' + $('#' + newPage).data('background') + ')');
+							});
+						});
+					} else {
+						slideCoverUp(false, function () {
+							replacePageContent(newPage, true);
+						});
+					}
 				} else if (newPage === 'home') {
 					replacePageContent(newPage);
 					slideCoverUp(true);
+				} else if (newPage === 'about') {
+					replacePageContent(newPage, false, function () {
+						pageContainer.css('background-image', 'linear-gradient(0deg, rgba(24,24,24,1) 20%, rgba(22,22,22,0.85) 50%, rgba(22,22,22,0.75) 100%), url(' + $('#' + newPage).data('background') + ')');
+					});
 				} else {
 					replacePageContent(newPage);
 				}
 				pageContainer.data('contains', newPage);
 			}
-
-			pageContainer.css('background-image', 'none');
 		});
 
-        $(document).on('click', '.project', function () {
+		$(document).on('click', '.project', function () {
 			var clickedProject = $(this);
-            $('#dynamic').load('/static/html/' +clickedProject.data('content'));
-            replacePageContent('dynamic', false, function () {
-				//pageContainer.css('background-image', 'linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .6) ), url(' + clickedProject.data('background') + ')');
+			$('#dynamic').load('/static/html/' +clickedProject.data('content'));
+			replacePageContent('dynamic', false, function () {
 				pageContainer.css('background-image', 'linear-gradient(0deg, rgba(24,24,24,1) 20%, rgba(22,22,22,0.85) 50%, rgba(22,22,22,0.75) 100%), url(' + clickedProject.data('background') + ')');
 			});
-            pageContainer.data('contains', 'dynamic');
+			pageContainer.data('contains', 'dynamic');
 		});
 
 		$('#page-container').scroll(function(){
