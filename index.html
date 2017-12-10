@@ -12,8 +12,10 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
 
 	<script src="static/js/modernizr.js"></script>
+	<script src="static/js/swiper.min.js"></script>
 
 	<link rel="stylesheet" type="text/css" href="static/css/site.css">
+	<link rel="stylesheet" type="text/css" href="static/css/swiper.min.css">
 	<link rel="stylesheet" type="text/css" href="static/fonts/FontAwesome/css/fontawesome.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gridlex/2.4.2/gridlex.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed" rel="stylesheet">
@@ -227,7 +229,6 @@
 			clickedElement.addClass('selected');
 
 			if(currentPage !== newPage) {
-				console.log('click ' + newPage)
 				if(currentPage === 'home') {
 					if(newPage === 'about') {
 						slideCoverUp(false, function () {
@@ -247,6 +248,9 @@
 					replacePageContent(newPage, false, function () {
 						pageContainer.css('background-image', 'linear-gradient(0deg, rgba(24,24,24,1) 20%, rgba(22,22,22,0.85) 50%, rgba(22,22,22,0.75) 100%), url(' + $('#' + newPage).data('background') + ')');
 					});
+					TweenMax.to($('#av-logo'), 1, {ease: Power4.easeOut, scale: .65, top: '11rem', left: '45%'});
+					TweenMax.to($('#menu .spacer'), 1, {ease: Power4.easeOut, width: 0});
+					$('#av-logo').toggleClass('reduced', false);
 				} else {
 					replacePageContent(newPage);
 				}
@@ -259,6 +263,22 @@
 			$('#dynamic').load('/static/html/' +clickedProject.data('content'));
 			replacePageContent('dynamic', false, function () {
 				pageContainer.css('background-image', 'linear-gradient(0deg, rgba(24,24,24,1) 20%, rgba(22,22,22,0.85) 50%, rgba(22,22,22,0.75) 100%), url(' + clickedProject.data('background') + ')');
+				$('#dynamic').empty();
+				var projectGallery = new Swiper ('.swiper-container', {
+					direction: 'horizontal',
+					pagination: {
+						el: '.swiper-pagination',
+						clickable: true
+					},
+				});
+				$('.gallery>.swiper-container>.button').click(function() {
+					var clickedButton = $(this);
+					if(clickedButton.hasClass('next')) {
+						projectGallery.slideNext();
+					} else {
+						projectGallery.slidePrev();
+					}
+				});
 			});
 			pageContainer.data('contains', 'dynamic');
 		});
@@ -268,15 +288,7 @@
 		});
 	</script>
 	<script>
-		$(document).on('click', '.gallery>.button', function() {
-			var clickedButton = $(this);
-			console.log('clicky')
-			if(clickedButton.hasClass('next')) {
-				TweenMax.to('.gallery>ul>li:first-child', .5, {marginLeft: '-=100%'});
-			} else {
-				TweenMax.to('.gallery>ul>li:first-child', .5, {marginLeft: '+=100%'});
-			}
-		});
+		
 	</script>
 </body>
 </html>
