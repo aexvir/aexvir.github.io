@@ -168,6 +168,7 @@ body {
   justify-content: space-between;
   top: -1rem;
   opacity: 0;
+  will-change: opacity;
 
   .spacer {
     width: 0;
@@ -229,6 +230,7 @@ body {
   top: 0;
   left: 0;
   background: url(../img/web/ae.jpg);
+  will-change: transform;
 }
 
 /*Av logo*/
@@ -239,6 +241,7 @@ body {
   perspective: 600px !important;
   transition: filter .5s ease;
   z-index: 10;
+  will-change: left, top;
 
   img {
     display: block;
@@ -272,6 +275,7 @@ body {
   background-size: cover;
   background-position: center center;
   background-size: cover;
+  will-change: scroll-position;
 }
 
 .page-content {
@@ -281,26 +285,31 @@ body {
 /*About*/
 .resume.container {
   @include flex-horizontal();
-  align-items: flex-start;
   margin-bottom: 1rem;
 
   .sidebar {
     @include flex-vertical();
+    align-self: stretch;
     background: $resume-sidebar-gray;
     width: 30%;
-    height: 100%;
     border-radius: $radius;
-    align-content: flex-start;
     color: $light-text;
     border-radius: $radius;
     @include box-shadow(0, .15rem, 1rem, $dark-shadow);
-    padding: 1rem 0;
+    padding: 1rem;
+    justify-content: flex-start;
 
-    img {
-      border-radius: 50%;
-      width: 60%;
-      margin: 1rem;
-      @include box-shadow(0, .15rem, 1rem, rgba(0, 0, 0, .75));
+    .photo {
+      @include flex-horizontal();
+      width: 100%;
+
+      img {
+        border-radius: 50%;
+        height: auto;
+        width: auto;
+        max-width: 60%;
+        @include box-shadow(0, .15rem, 1rem, rgba(0, 0, 0, .75));
+      }
     }
 
     p {
@@ -313,7 +322,7 @@ body {
     }
 
     .section {
-      padding: 0 1rem 1rem 1rem;
+      width: 100%;
 
       h3 {
         width: 100%;
@@ -352,15 +361,46 @@ body {
 
   .content {
     @include flex-vertical();
-    background: $light-text;
+    align-self: stretch;
+    justify-content: flex-start;
     width: 100%;
-    height: calc(100% - 12.5rem);
-    border-radius: $radius;
-    align-content: flex-start;
-    color: $dark-text;
-    border-radius: $radius;
-    @include box-shadow(0, .15rem, 1rem, $dark-shadow);
-    margin: 12.5rem 1rem 0 1rem;
-    padding: 1rem;
+    padding: 0 1rem;
+
+    .header {
+      @include flex-horizontal();
+      width: 100%;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding-bottom: 1rem;
+
+      h2 {
+        color: $light-text;
+        text-transform: uppercase;
+        font-weight: lighter;
+        margin: 0;
+        padding: 0;
+      }
+
+      img {
+        height: auto;
+        width: auto;
+        max-width: 35%;
+        max-height: 100%;
+      }
+    }
+
+    .gist {
+      @include flex-vertical();
+      justify-content: flex-start;
+      flex-grow: 1;
+      width: 100%;
+      background: $light-text;
+      border-radius: $radius;
+      align-content: flex-start;
+      color: $dark-text;
+      border-radius: $radius;
+      @include box-shadow(0, .15rem, 1rem, $dark-shadow);
+      padding: 1rem 0;
+    }
   }
 }
