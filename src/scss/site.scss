@@ -220,6 +220,10 @@ body {
   }
 }
 
+#menu-trigger {
+  display: none;
+}
+
 /*Page cover*/
 #page-cover {
   position: fixed;
@@ -240,13 +244,14 @@ body {
   z-index: 2;
   perspective: 600px !important;
   transition: filter .5s ease;
-  z-index: 10;
   will-change: left, top;
+  width: 100%;
 
   img {
     display: block;
     height: 18rem;
-    width: 32rem;
+    max-width: 32rem;
+    width: 80%;
     transform: rotateX(90deg);
     align-self:center;
   }
@@ -258,6 +263,7 @@ body {
   &.reduced {
     filter: brightness(0) invert(1);
     cursor: pointer;
+    z-index: 10;
   }
 }
 
@@ -336,7 +342,7 @@ body {
 
         i {
           font-size: 1.5rem;
-          margin-right: 1rem;
+          margin-right: .75rem;
           width: 1.75rem !important;
         }
 
@@ -378,7 +384,6 @@ body {
         text-transform: uppercase;
         font-weight: lighter;
         margin: 0;
-        padding: 0;
       }
 
       img {
@@ -401,6 +406,51 @@ body {
       border-radius: $radius;
       @include box-shadow(0, .15rem, 1rem, $dark-shadow);
       padding: 1rem 0;
+    }
+  }
+}
+
+/* Mobile */
+@media only screen and (max-width: 767px) {
+  #menu {
+    @include flex-vertical();
+    width: 100%;
+    height: auto;
+    padding-top: 4rem;
+    background: rgba(35, 35, 35, .75);
+    z-index: 9;
+    transform: translateY(-20rem);
+
+    .directory {
+      @include flex-horizontal();
+
+      .hidden {
+        display: none;
+      }
+
+      &:hover {
+        .visible {
+          transform: scale(1.25);
+        }
+      }
+    }
+
+    .separator {
+      display: none;
+    }
+  }
+
+  #menu-trigger {
+    @include flex-horizontal();
+    position: fixed;
+    width: 100%;
+    z-index: 11;
+
+    i {
+      color: $light-text;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 1rem;
     }
   }
 }

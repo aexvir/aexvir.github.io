@@ -56,6 +56,10 @@
 		</a>
 	</nav>
 
+	<div id="menu-trigger">
+		<i class="fa fa-bars"></i>
+	</div>
+
 	<div id="page-cover"></div>
 
 	<div id="av-logo">
@@ -208,7 +212,8 @@
 	</script>
 
 	<script>
-		var pageContainer = $('#page-container');
+		const pageContainer = $('#page-container');
+		const mobileMediaQuery = window.matchMedia('only screen and (max-width: 767px)');
 
 		function replacePageContent(page, fromHome, onHiddenCallback) {
 			TweenMax.to(pageContainer, (fromHome ? 0 : .5), {ease: Power4.easeOut, y: '+=25', opacity: 0, onComplete: function () {
@@ -308,8 +313,23 @@
 			pageContainer.data('contains', 'dynamic');
 		});
 
-		$('#page-container').scroll(function(){
-			window.requestAnimationFrame(scrollHero);
+		if(!mobileMediaQuery.matches) {
+			pageContainer.scroll(function(){
+				window.requestAnimationFrame(scrollHero);
+			});
+		}
+
+		mobileMediaQuery.addListener(function () {
+			if(mobileMediaQuery.matches) {
+				pageContainer.unbind('scroll');
+				$('#menu-trigger').click(function () {
+					TweenMax.to('#menu', .75, {ease: Power4.easeOut, y: 0});
+				});
+			} else {
+				pageContainer.scroll(function(){
+					window.requestAnimationFrame(scrollHero);
+				});
+			}
 		});
 	</script>
 	<script>
