@@ -1,0 +1,219 @@
+@import 'variables';
+@import 'mixins';
+
+.resume.container {
+  @include flex-horizontal();
+  margin-bottom: 1rem;
+
+  .sidebar {
+    @include flex-vertical();
+    align-self: stretch;
+    background: $resume-sidebar-gray;
+    width: 30%;
+    border-radius: $radius;
+    color: $light-text;
+    border-radius: $radius;
+    @include box-shadow(0, .15rem, 1rem, $dark-shadow);
+    padding: 1rem;
+    justify-content: flex-start;
+
+    .photo {
+      @include flex-horizontal();
+      width: 100%;
+
+      img {
+        border-radius: 50%;
+        height: auto;
+        width: auto;
+        max-width: 60%;
+        @include box-shadow(0, .15rem, 1rem, rgba(0, 0, 0, .75));
+      }
+    }
+
+    p {
+      text-align: justify;
+    }
+
+    a {
+      text-decoration: none;
+      color: $light-text !important;
+    }
+
+    .section {
+      width: 100%;
+
+      h3 {
+        width: 100%;
+        text-transform: uppercase;
+        font-weight: normal;
+      }
+
+      .info.bullet {
+        @include flex-horizontal();
+        width: 100%;
+        margin-bottom: 1rem;
+
+        i {
+          font-size: 1.5rem;
+          margin-right: .75rem;
+          width: 1.75rem !important;
+        }
+
+        h4 {
+          opacity: .6;
+          margin: 0;
+          font-size: .85rem;
+          font-weight: 100;
+        }
+        
+        p {
+          margin: .1rem 0 0 0;
+        }
+
+        .data {
+          width: 100%;
+          white-space: nowrap;
+        }
+      }
+
+      .info.percentage {
+        @include flex-horizontal();
+        margin-bottom: .5rem;
+
+        .progressbar {
+          height: .3rem;
+          border-radius: .15rem;
+          background: rgba(245, 245, 245, .6);
+          position: relative;
+          flex-grow: 1;
+          overflow: hidden;
+          margin-left: .5rem;
+
+          .progress {
+            background: $light-text;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+          }
+        }
+      }
+    }
+  }
+
+  .content {
+    @include flex-vertical();
+    align-self: stretch;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 0 1rem;
+
+    .header {
+      @include flex-horizontal();
+      width: 100%;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding-bottom: 1rem;
+
+      h2 {
+        color: $light-text;
+        text-transform: uppercase;
+        font-weight: lighter;
+        margin: 0;
+      }
+
+      img {
+        height: auto;
+        width: auto;
+        max-width: 35%;
+        max-height: 100%;
+      }
+    }
+
+    .gist {
+      @include flex-vertical();
+      justify-content: flex-start;
+      flex-grow: 1;
+      width: 100%;
+      background: $light-text;
+      border-radius: $radius;
+      align-content: flex-start;
+      color: $dark-text;
+      border-radius: $radius;
+      @include box-shadow(0, .15rem, 1rem, $dark-shadow);
+      padding: 1rem 0;
+
+      >.title {
+        @include flex-horizontal();
+        justify-content: flex-start;
+        text-transform: uppercase;
+        margin-bottom: .5rem;
+        width: 100%;
+
+        i {
+          font-size: 1.5rem;
+          margin: -.25rem 0 0 1.25rem;
+        }
+
+        h2 {
+          margin: 0 0 0 1rem;
+          font-weight: normal;
+        }
+      }
+
+      >.experience {
+        @include flex-horizontal();
+        align-items: flex-start;
+        width: 100%;
+
+        >.daterange {
+          @include flex-vertical();
+          font-size: .85rem;
+          text-transform: uppercase;
+          opacity: .75;
+          margin: .25rem .5rem 0 1rem;
+        }
+
+        >.essence {
+          @include flex-vertical();
+          align-items: flex-start;
+          flex-grow: 1;
+          margin-right: 1rem;
+
+          >.title {
+            @include flex-horizontal();
+            width: 100%;
+
+            >.name {
+              @include flex-vertical();
+              align-items: flex-start;
+              flex-grow: 1;
+              font-size: 1.25rem;
+              font-weight: bold;
+              flex-grow: 1;
+
+              >.position {
+                font-size: .85rem;
+                font-weight: normal;
+                margin-top: -.125rem;
+                opacity: .75;
+              }
+            }
+
+            >.image {
+              margin: 0 0 0 .5rem;
+  
+              img {
+                max-height: 2rem;
+              }
+            }
+          }
+
+          >.description {
+            text-align: justify;
+          }
+        }
+      }
+    }
+  }
+}
