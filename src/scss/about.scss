@@ -76,27 +76,58 @@
           white-space: nowrap;
         }
       }
+    }
+  }
 
-      .info.percentage {
-        @include flex-horizontal();
-        margin-bottom: .5rem;
+  .unbalanced.grid {
+    .col:not(.flexible) {
+      flex-grow: 0;
+    }
 
-        .progressbar {
-          height: .3rem;
-          border-radius: .15rem;
-          background: rgba(245, 245, 245, .6);
-          position: relative;
-          flex-grow: 1;
-          overflow: hidden;
-          margin-left: .5rem;
+    .flexible.col {
+      flex-grow: 1;
+    }
+  }
 
-          .progress {
-            background: $light-text;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-          }
+  .skill {
+    height: 1.25rem;
+    line-height: 1.25rem;
+    @include flex-horizontal();
+    justify-content: flex-start;
+    white-space: nowrap;
+
+    >.progressbar {
+      height: .3rem;
+      border-radius: .15rem;
+      background: rgba(245, 245, 245, .6);
+      position: relative;
+      flex-grow: 1;
+      overflow: hidden;
+      margin-left: .5rem;
+
+      >.progress {
+        background: $light-text;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    }
+  }
+
+  .techskills {
+    width: 100%;
+
+    >.grid {
+      margin: .5rem;
+    }
+
+    .skill {
+      >.progressbar {
+        background: rgba(35, 35, 35, .6);
+
+        >.progress {
+          background: $dark-text;
         }
       }
     }
@@ -234,6 +265,16 @@
     .section {
       margin: 1rem;
       flex-grow: 1;
+    }
+  }
+
+  .techskills {
+    >.grid {
+      flex-direction: column;
+
+      >.col {
+        margin-bottom: -2rem;
+      }
     }
   }
 }

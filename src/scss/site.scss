@@ -188,6 +188,7 @@ body {
     padding-top: 4rem;
     background: rgba(35, 35, 35, .75);
     z-index: 9;
+    backdrop-filter: blur(10px);
     transform: translateY(-20rem);
 
     .directory {
