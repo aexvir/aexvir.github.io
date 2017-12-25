@@ -222,4 +222,32 @@ body {
       padding: 1rem;
     }
   }
+
+  #page-cover {
+    position: static;
+  }
+
+  #av-logo {
+    position: absolute;
+  }
+
+  #page-container-wrapper {
+    height: auto;
+    width: 100%;
+    overflow: auto;
+  }
+  
+  #page-container {
+    height: auto;
+    width: 100%;
+    overflow: auto;
+    background-size: cover;
+    background-position: center center;
+    background-size: cover;
+    will-change: scroll-position;
+  }
+
+  .page-content {
+    display: block;
+  }
 }

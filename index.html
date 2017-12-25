@@ -437,13 +437,7 @@
 			pageContainer.data('contains', 'dynamic');
 		});
 
-		if(!mobileMediaQuery.matches) {
-			pageContainer.scroll(function(){
-				window.requestAnimationFrame(scrollHero);
-			});
-		}
-
-		mobileMediaQuery.addListener(function () {
+		function responsiveFeatureToggle() {
 			if(mobileMediaQuery.matches) {
 				pageContainer.unbind('scroll');
 				$('#menu-trigger').click(function () {
@@ -454,7 +448,11 @@
 					window.requestAnimationFrame(scrollHero);
 				});
 			}
-		});
+		}
+
+		mobileMediaQuery.addListener(responsiveFeatureToggle);
+
+		responsiveFeatureToggle();
 	</script>
 	<script>
 		
