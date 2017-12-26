@@ -120,6 +120,11 @@
 
     >.grid {
       margin: .5rem;
+      margin-bottom: -.5rem;
+    }
+
+    .grid .col {
+      padding-bottom: 0;
     }
 
     .skill {
@@ -271,10 +276,6 @@
   .techskills {
     >.grid {
       flex-direction: column;
-
-      >.col {
-        margin-bottom: -2rem;
-      }
     }
   }
 }
