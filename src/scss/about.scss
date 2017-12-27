@@ -9,12 +9,12 @@
     @include flex-vertical();
     align-items: stretch;
     align-self: stretch;
-    background: $resume-sidebar-gray;
+    // background: $resume-sidebar-gray;
     width: 30%;
     border-radius: $radius;
     color: $light-text;
     border-radius: $radius;
-    @include box-shadow(0, .15rem, 1rem, $dark-shadow);
+    // @include box-shadow(0, .15rem, 1rem, $dark-shadow);
     justify-content: flex-start;
 
     .photo {
@@ -203,7 +203,8 @@
         align-items: flex-start;
         width: 100%;
 
-        >.daterange {
+        >.daterange,
+        >.essence>.daterange {
           @include flex-vertical();
           font-size: .85rem;
           text-transform: uppercase;
@@ -265,6 +266,37 @@
       width: 100%;
       flex-grow: 1;
       padding: 0;
+
+      .gist {
+        >.experience {
+          flex-direction: column;
+          margin-bottom: 1rem;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+
+          >.daterange,
+          >.essence>.daterange {
+            @include flex-horizontal();
+            width: 100%;
+            margin: .5rem 1rem -.5rem 1rem;
+            justify-content: space-around;
+
+            span:first-child::before {
+              content: "From: ";
+            }
+
+            span:last-child::before {
+              content: "To: ";
+            }
+          }
+
+          >.essence {
+            margin-left: 1rem;
+          }
+        }
+      }
     }
 
     .section {

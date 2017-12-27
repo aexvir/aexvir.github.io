@@ -110,9 +110,17 @@
             $('#menu-trigger').click(function () {
                 TweenMax.to('#menu', .75, {ease: Power4.easeOut, y: 0});
             });
+            $('.gist>.experience').each(function (i, e) {
+                const dateRange = $(e).find('.daterange').detach();
+                $(e).find('.essence>.title').after(dateRange);
+            });
         } else {
             pageContainer.scroll(function(){
                 window.requestAnimationFrame(scrollHero);
+            });
+            $('.gist>.experience').each(function (i, e) {
+                const dateRange = $(e).find('.daterange').detach();
+                $(e).find('.essence').before(dateRange);
             });
         }
     }
