@@ -172,6 +172,10 @@ body {
 
 /* Mobile */
 @media only screen and (max-width: 767px) {
+  #page-cover {
+    background-attachment: fixed;
+  }
+
   .responsive.grid {
     flex-direction: column;
 

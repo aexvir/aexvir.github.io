@@ -112,7 +112,8 @@
             });
             $('.gist>.experience').each(function (i, e) {
                 const dateRange = $(e).find('.daterange').detach();
-                $(e).find('.essence>.title').after(dateRange);
+                $(e).find('.title>.name').before(dateRange);
+                //$(e).find('.essence>.title').after(dateRange);
             });
         } else {
             pageContainer.scroll(function(){

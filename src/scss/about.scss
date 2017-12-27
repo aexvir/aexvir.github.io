@@ -204,7 +204,7 @@
         width: 100%;
 
         >.daterange,
-        >.essence>.daterange {
+        >.essence>.title>.daterange {
           @include flex-vertical();
           font-size: .85rem;
           text-transform: uppercase;
@@ -276,24 +276,13 @@
             margin-bottom: 0;
           }
 
-          >.daterange,
-          >.essence>.daterange {
-            @include flex-horizontal();
-            width: 100%;
-            margin: .5rem 1rem -.5rem 1rem;
-            justify-content: space-around;
-
-            span:first-child::before {
-              content: "From: ";
-            }
-
-            span:last-child::before {
-              content: "To: ";
-            }
-          }
-
           >.essence {
             margin-left: 1rem;
+
+            >.title>.daterange {
+              @include flex-vertical();
+              margin: 0 .5rem 0 0;
+            }
           }
         }
       }
