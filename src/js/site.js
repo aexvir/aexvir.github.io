@@ -110,15 +110,18 @@
             $('#menu-trigger').click(function () {
                 TweenMax.to('#menu', .75, {ease: Power4.easeOut, y: 0});
             });
+            const resumeHeader = $('#about').find('.content>.header');
+            $('#about>.resume>.sidebar>.photo').append(resumeHeader);
             $('.gist>.experience').each(function (i, e) {
                 const dateRange = $(e).find('.daterange').detach();
                 $(e).find('.title>.name').before(dateRange);
-                //$(e).find('.essence>.title').after(dateRange);
             });
         } else {
             pageContainer.scroll(function(){
                 window.requestAnimationFrame(scrollHero);
             });
+            const resumeHeader = $('#about>.resume>.sidebar>.photo').find('.header');
+            $('#about').find('.content>.gist').before(resumeHeader);
             $('.gist>.experience').each(function (i, e) {
                 const dateRange = $(e).find('.daterange').detach();
                 $(e).find('.essence').before(dateRange);
