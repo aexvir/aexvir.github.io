@@ -1,4 +1,19 @@
 (function(){
+    var scrollingRevealAnimations = null;
+    const revealAnimatable = [
+        '#about .sidebar>.photo',
+        '#about .sidebar>.section',
+        '#about .sidebar .skill',
+        '#about .sidebar>.photo>.header',
+        '#about .content>.header',
+        // '#about .content .gist',
+        '#about .content .gist>.title',
+        '#about .content .gist .daterange',
+        '#about .content .gist .essence>.title',
+        '#about .content .gist .essence>.description',
+        '#about .content .techskills .skill',
+        '#portfolio .element'
+    ];
     const pageContainer = $('#page-container');
     const mobileMediaQuery = window.matchMedia('only screen and (max-width: 767px)');
 
@@ -70,6 +85,8 @@
                 slideCoverUp(true);
             } else if (newPage === 'about') {
                 replacePageContent(newPage, false, function () {
+                    var a = ScrollReveal({container: '#page-container', reset: true});
+                    a.reveal(revealAnimatable.join());
                     pageContainer.css('background-image', 'linear-gradient(0deg, rgba(24,24,24,1) 20%, rgba(22,22,22,0.85) 50%, rgba(22,22,22,0.75) 100%), url(' + $('#' + newPage).data('background') + ')');
                 });
             } else {
@@ -104,6 +121,13 @@
         pageContainer.data('contains', 'dynamic');
     });
 
+    function setScrollingRevealAnimations(sr) {
+        if(scrollingRevealAnimations !== null)
+            scrollingRevealAnimations.destroy();
+
+        scrollingRevealAnimations = sr;
+    }
+
     function responsiveFeatureToggle() {
         if(mobileMediaQuery.matches) {
             pageContainer.unbind('scroll');
@@ -116,6 +140,8 @@
                 const dateRange = $(e).find('.daterange').detach();
                 $(e).find('.title>.name').before(dateRange);
             });
+            setScrollingRevealAnimations(ScrollReveal());
+            scrollingRevealAnimations.reveal(revealAnimatable.join());
         } else {
             pageContainer.scroll(function(){
                 window.requestAnimationFrame(scrollHero);
@@ -126,6 +152,12 @@
                 const dateRange = $(e).find('.daterange').detach();
                 $(e).find('.essence').before(dateRange);
             });
+            setScrollingRevealAnimations(null);
+            // setScrollingRevealAnimations(ScrollReveal({
+            //     container: '#page-container',
+            //     reset: true
+            // }));
+            // scrollingRevealAnimations.reveal(revealAnimatable.join());
         }
     }
 
