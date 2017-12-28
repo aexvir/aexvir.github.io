@@ -68,6 +68,7 @@
         clickedElement.addClass('selected');
 
         if(currentPage !== newPage) {
+            console.log(newPage)
             if(currentPage === 'home') {
                 if(newPage === 'about') {
                     slideCoverUp(false, function () {
@@ -85,9 +86,26 @@
                 slideCoverUp(true);
             } else if (newPage === 'about') {
                 replacePageContent(newPage, false, function () {
-                    var a = ScrollReveal({container: '#page-container', reset: true});
-                    a.reveal(revealAnimatable.join());
                     pageContainer.css('background-image', 'linear-gradient(0deg, rgba(24,24,24,1) 20%, rgba(22,22,22,0.85) 50%, rgba(22,22,22,0.75) 100%), url(' + $('#' + newPage).data('background') + ')');
+                });
+            } else if (newPage === 'contact') {
+                console.log('aa')
+                replacePageContent(newPage, false, function () {
+                    console.log('callback')
+                    $('#contact-mutating-text').empty();
+                    var typed = new Typed('#contact-mutating-text', {
+                        loop: true,
+                        typeSpeed: 100,
+                        backSpeed: 25,
+                        smartBackspace: false,
+                        strings: [
+                            'Contact me',
+                            'Say hi',
+                            'Ask me something',
+                            'Wish me good things',
+                            'Send me something cool'
+                        ]
+                    });
                 });
             } else {
                 replacePageContent(newPage);
