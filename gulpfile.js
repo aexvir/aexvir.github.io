@@ -10,6 +10,7 @@ var optimizejs = require('gulp-optimize-js');
 var util = require('gulp-util');
 var notifier = require('node-notifier');
 var path = require('path');
+var babel = require("gulp-babel");
 
 var localConfig = require('./config/local_config.json');
 var gulpModulesConfig = require('./config/gulp_modules_config.json');
@@ -60,14 +61,16 @@ gulp.task('js', function () {
     return gulp
         .src(localConfig.JS_INPUT_DIR, {cwd: localConfig.BASE_DIR})
         .pipe(sourcemaps.init())
+        .pipe(babel())
         .pipe(uglify(gulpModulesConfig.uglify))
-        .on('error', function () {
+        .on('error', function (err) {
             util.log('Error during Javascript uglification build, stream aborted.');
             notifier.notify({
                 title: 'Gulp failed',
                 message: 'Error during js uglify',
                 icon: 'dialog-error'
             });
+            console.log(err);
             gulp.task('run');
         })
         .on('finish', function () {

@@ -1,5 +1,6 @@
 (function(){
-    var scrollingRevealAnimations = null;
+    let scrollingRevealAnimations = null;
+
     const revealAnimatable = [
         '#about .sidebar>.photo',
         '#about .sidebar>.section',
@@ -36,12 +37,12 @@
     }
 
     function scrollHero() {
-        var scrollVar = $('#page-container').scrollTop().toFixed(2);
+        let scrollVar = $('#page-container').scrollTop().toFixed(2);
 
         if(scrollVar < 500) {
-            var opacity = Math.max((100 - .5 * scrollVar)/100, 0);
+            let opacity = Math.max((100 - .5 * scrollVar)/100, 0);
             
-            var menuStyling = {
+            let menuStyling = {
                 'background': 'rgba(35, 35, 35, ' + (1 - opacity - .15) + ')'
             }
             
@@ -56,71 +57,122 @@
         }
     }
 
-    function accessDirectory(dir) {
-        return 0;
+    function navigatePage(currentPage, newPage) {
+        if(mobileMediaQuery.matches) {
+            return function () {console.log('scroll to ' + newPage)};
+
+        } else {
+            if(currentPage == newPage)
+                return function () {};
+
+            const action = currentPage + '>' + newPage;
+            console.log(action)
+
+            switch (action) {
+                case (action.match(/>home/) || {}).input:
+                    console.log('>home')
+                    return function () {
+                        replacePageContent(newPage);
+                        slideCoverUp(true);
+                    };
+
+                case (action.match(/>about/) || {}).input:
+                    console.log('>about')
+                    return function () {
+                        slideCoverUp(false, function () {
+                            replacePageContent(newPage, true, function () {
+                                pageContainer.css('background-image', 'linear-gradient(0deg, rgba(24,24,24,1) 20%, rgba(22,22,22,0.85) 50%, rgba(22,22,22,0.75) 100%), url(' + $('#' + newPage).data('background') + ')');
+                            });
+                        });
+                    };
+
+                case (action.match(/>contact/) || {}).input:
+                    console.log('>contact')
+                    return function () {
+                        replacePageContent(newPage, false, function () {
+                            $('#contact-mutating-text').empty();
+                            let typed = new Typed('#contact-mutating-text', {
+                                loop: true,
+                                typeSpeed: 100,
+                                backSpeed: 25,
+                                smartBackspace: false,
+                                strings: [
+                                    'Contact me',
+                                    'Say hi',
+                                    'Ask me something',
+                                    'Wish me good things',
+                                    'Send me something cool'
+                                ]
+                            });
+                        });
+                    };
+            }
+
+            pageContainer.data('contains', newPage);
+        }
     }
 
     $(document).on('click', '.directory', function() {
-        var clickedElement = $(this);
-        var currentPage = pageContainer.data('contains');
-        var newPage = clickedElement.data('dir');
+        let clickedElement = $(this);
+        let currentPage = pageContainer.data('contains');
+        let newPage = clickedElement.data('dir');
         $('.selected.directory').removeClass('selected');
         clickedElement.addClass('selected');
 
-        if(currentPage !== newPage) {
-            console.log(newPage)
-            if(currentPage === 'home') {
-                if(newPage === 'about') {
-                    slideCoverUp(false, function () {
-                        replacePageContent(newPage, true, function () {
-                            pageContainer.css('background-image', 'linear-gradient(0deg, rgba(24,24,24,1) 20%, rgba(22,22,22,0.85) 50%, rgba(22,22,22,0.75) 100%), url(' + $('#' + newPage).data('background') + ')');
-                        });
-                    });
-                } else {
-                    slideCoverUp(false, function () {
-                        replacePageContent(newPage, true);
-                    });
-                }
-            } else if (newPage === 'home') {
-                replacePageContent(newPage);
-                slideCoverUp(true);
-            } else if (newPage === 'about') {
-                replacePageContent(newPage, false, function () {
-                    pageContainer.css('background-image', 'linear-gradient(0deg, rgba(24,24,24,1) 20%, rgba(22,22,22,0.85) 50%, rgba(22,22,22,0.75) 100%), url(' + $('#' + newPage).data('background') + ')');
-                });
-            } else if (newPage === 'contact') {
-                console.log('aa')
-                replacePageContent(newPage, false, function () {
-                    console.log('callback')
-                    $('#contact-mutating-text').empty();
-                    var typed = new Typed('#contact-mutating-text', {
-                        loop: true,
-                        typeSpeed: 100,
-                        backSpeed: 25,
-                        smartBackspace: false,
-                        strings: [
-                            'Contact me',
-                            'Say hi',
-                            'Ask me something',
-                            'Wish me good things',
-                            'Send me something cool'
-                        ]
-                    });
-                });
-            } else {
-                replacePageContent(newPage);
-            }
-            pageContainer.data('contains', newPage);
-        }
+        navigatePage(currentPage, newPage)();
+
+        // if(currentPage !== newPage) {
+        //     console.log(newPage)
+        //     if(currentPage === 'home') {
+        //         if(newPage === 'about') {
+        //             slideCoverUp(false, function () {
+        //                 replacePageContent(newPage, true, function () {
+        //                     pageContainer.css('background-image', 'linear-gradient(0deg, rgba(24,24,24,1) 20%, rgba(22,22,22,0.85) 50%, rgba(22,22,22,0.75) 100%), url(' + $('#' + newPage).data('background') + ')');
+        //                 });
+        //             });
+        //         } else {
+        //             slideCoverUp(false, function () {
+        //                 replacePageContent(newPage, true);
+        //             });
+        //         }
+        //     } else if (newPage === 'home') {
+        //         replacePageContent(newPage);
+        //         slideCoverUp(true);
+        //     } else if (newPage === 'about') {
+        //         replacePageContent(newPage, false, function () {
+        //             pageContainer.css('background-image', 'linear-gradient(0deg, rgba(24,24,24,1) 20%, rgba(22,22,22,0.85) 50%, rgba(22,22,22,0.75) 100%), url(' + $('#' + newPage).data('background') + ')');
+        //         });
+        //     } else if (newPage === 'contact') {
+        //         replacePageContent(newPage, false, function () {
+        //             $('#contact-mutating-text').empty();
+        //             let typed = new Typed('#contact-mutating-text', {
+        //                 loop: true,
+        //                 typeSpeed: 100,
+        //                 backSpeed: 25,
+        //                 smartBackspace: false,
+        //                 strings: [
+        //                     'Contact me',
+        //                     'Say hi',
+        //                     'Ask me something',
+        //                     'Wish me good things',
+        //                     'Send me something cool'
+        //                 ]
+        //             });
+        //         });
+        //     } else {
+        //         replacePageContent(newPage);
+        //     }
+        //     pageContainer.data('contains', newPage);
+        // }
     });
 
     $(document).on('click', '.project', function () {
-        var clickedProject = $(this);
+        let clickedProject = $(this);
         $('#dynamic').load('/static/html/' +clickedProject.data('content'));
         replacePageContent('dynamic', false, function () {
             pageContainer.css('background-image', 'linear-gradient(0deg, rgba(24,24,24,1) 20%, rgba(22,22,22,0.85) 50%, rgba(22,22,22,0.75) 100%), url(' + clickedProject.data('background') + ')');
             $('#dynamic').empty();
-            var projectGallery = new Swiper ('.swiper-container', {
+            let projectGallery = new Swiper ('.swiper-container', {
                 direction: 'horizontal',
                 pagination: {
                     el: '.swiper-pagination',
@@ -128,7 +180,7 @@
                 },
             });
             $('.gallery>.swiper-container>.button').click(function() {
-                var clickedButton = $(this);
+                let clickedButton = $(this);
                 if(clickedButton.hasClass('next')) {
                     projectGallery.slideNext();
                 } else {
@@ -160,6 +212,7 @@
             });
             setScrollingRevealAnimations(ScrollReveal());
             scrollingRevealAnimations.reveal(revealAnimatable.join());
+            pageContainer.empty();
         } else {
             pageContainer.scroll(function(){
                 window.requestAnimationFrame(scrollHero);
@@ -171,11 +224,6 @@
                 $(e).find('.essence').before(dateRange);
             });
             setScrollingRevealAnimations(null);
-            // setScrollingRevealAnimations(ScrollReveal({
-            //     container: '#page-container',
-            //     reset: true
-            // }));
-            // scrollingRevealAnimations.reveal(revealAnimatable.join());
         }
     }
 
